@@ -57,6 +57,7 @@ footer { background: var(--neutral-dark); color: var(--white); text-align: cente
 .active { color: var(--primary-blue) !important; }
 
 /* About, Services, Contact page styles (basic) */
+
 .about-hero, .services-hero, .contact-hero { background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--secondary-green) 100%); padding: 2.5rem 0 1.5rem 0; text-align: center; }
 .company-history, .mission-vision, .team, .services-list, .contact-form-section { margin: 2rem auto; }
 .team-members { display: flex; gap: 2rem; flex-wrap: wrap; }
@@ -74,8 +75,69 @@ footer { background: var(--neutral-dark); color: var(--white); text-align: cente
 /* About
 
 .about-section {} */
+.about-section {padding:4rem 0;background:#fff;}
+.about-section .about-header{text-align:center;margin-bottom:3rem;}
+.about-section .about-header h2{font-size:2.5rem;color:#1a237e;margin-bottom:1rem;}
+.about-section .about-header p{font-size:1.2rem;color:#666;max-width:800px;margin:0 auto;}
+
+.about-main{display:flex;flex-wrap:wrap;gap:3rem;align-items:center;margin-bottom:3rem;}
+.about-main-text{flex:1;min-width:300px;}
+.about-main-text h3{color:#1976d2;font-size:1.8rem;margin-bottom:1rem;}
+.about-main-text p{line-height:1.6;color:#555;margin-bottom:1rem;}
+.about-main-img{flex:1;min-width:300px;text-align:center;}
+.about-main-img img{max-width:100%;height:auto;border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,0.1);}
+
+.about-stats{display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;margin-top:3rem;}
+.about-stats-clients{background:linear-gradient(135deg, #1976d2, #64b5f6);color:#fff;padding:2rem;border-radius:15px;text-align:center;flex:1;min-width:200px;box-shadow:0 4px 15px rgba(25,118,210,0.3);}
+.about-stats-years{background:linear-gradient(135deg, #388e3c, #66bb6a);color:#fff;padding:2rem;border-radius:15px;text-align:center;flex:1;min-width:200px;box-shadow:0 4px 15px rgba(56,142,60,0.3);}
+.about-stats-awards{background:linear-gradient(135deg, #f57c00, #ffb74d);color:#fff;padding:2rem;border-radius:15px;text-align:center;flex:1;min-width:200px;box-shadow:0 4px 15px rgba(245,124,0,0.3);}
+.about-stats h3{font-size:2.5rem;margin-bottom:0.5rem;}
+.about-stats p{font-size:1.1rem;}
+
 
 /* Enhanced Contact Form Section */
+.stats-company-section{background:linear-gradient(135deg, #f8f9fa 0%, #e3f2fd 100%);padding:4rem 0;}
+.stats-company-info{text-align:center;margin-bottom:4rem;}
+.stats-company-info h2{font-size:2.5rem;color:#1a237e;margin-bottom:1rem;}
+.stats-company-info p{font-size:1.2rem;color:#666;max-width:800px;margin:0 auto;}
+
+.stats-company-missionvisionvalues{display:flex;flex-wrap:wrap;gap:2rem;margin-bottom:4rem;}
+.stats-company-mission-item{flex:1;min-width:300px;background:#fff;padding:2rem;border-radius:15px;box-shadow:0 4px 20px rgba(0,0,0,0.08);}
+.stats-company-mission-item-icon{text-align:center;margin-bottom:1.5rem;}
+.stats-company-mission-item-icon-circle{width:60px;height:60px;background:linear-gradient(135deg, #1976d2, #64b5f6);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto;}
+.stats-company-mission-item-icon-circle span{color:#fff;font-size:1.5rem;}
+.stats-company-mission-item h3{color: #1976d2;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center}
+.stats-company-mission-item p{color: #555;line-height:1.6;text-align:center;}
+
+.stats-company-vision-item{flex:1;min-width:300px;background:#fff;padding:2rem;border-radius:15px;box-shadow:0 4px 20px rgba(0,0,0,0.08);}
+.stats-company-vision-item-icon{text-align:center;margin-bottom:1.5rem;}
+.stats-company-vision-item-icon-circle{width:60px;height:60px;background:linear-gradient(135deg, #388e3c, #66bb6a);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto;}
+.stats-company-vision-item-icon-circle span{color:#fff;font-size:1.5rem;}
+.stats-company-vision-item h3{color: #388e3c;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center}
+  .stats-company-vision-item p{color: #555;line-height:1.6;text-align:center;}
+
+  .stats-company-values-item{flex:1;min-width:300px;background:#fff;padding:2rem;border-radius:15px;box-shadow:0 4px 20px rgba(0,0,0,0.08);}
+  .stats-company-values-item-icon{text-align:center;margin-bottom:1.5rem;}
+  .stats-company-values-item-icon-circle{width:60px;height:60px;background:linear-gradient(135deg, #f57c00, #ffb74d);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto;}
+  .stats-company-values-item-icon-circle span{color:#fff;font-size:1.5rem;}
+  .stats-company-values-item h3{color: #f57c00;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center}
+    .stats-company-values-item ul{color: #555;
+      line-height: 1.8;
+      list-style: none;
+      padding: 0;
+      text-align: center;}
+      
+
+
 .contact-form-section-enhanced {
   padding: 4rem 0;
   background: #f8f9fa;

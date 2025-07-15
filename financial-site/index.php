@@ -76,80 +76,82 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </section>
 
         <!-- About Section -->
-        <section class="about-section" style="padding:4rem 0;background:#fff;">
+        <section class="about-section" >
             <div class="container">
-                <div style="text-align:center;margin-bottom:3rem;">
-                    <h2 style="font-size:2.5rem;color:#1a237e;margin-bottom:1rem;">About Unique Trust Investment</h2>
-                    <p style="font-size:1.2rem;color:#666;max-width:800px;margin:0 auto;">Building financial futures with trust and expertise</p>
+                <div class="about-header">
+                    <h2>About Unique Trust Investment</h2>
+                    <p>Building financial futures with trust and expertise</p>
                 </div>
                 
-                <div style="display:flex;flex-wrap:wrap;gap:3rem;align-items:center;margin-bottom:3rem;">
-                    <div style="flex:1;min-width:300px;">
-                        <h3 style="color:#1976d2;font-size:1.8rem;margin-bottom:1rem;">Leading Financial Solutions Provider</h3>
-                        <p style="line-height:1.6;color:#555;margin-bottom:1rem;">Unique Trust Investment is a premier financial company dedicated to providing innovative and reliable financial products. With years of experience in the industry, we have built a reputation for excellence and trustworthiness.</p>
-                        <p style="line-height:1.6;color:#555;">Our commitment to customer satisfaction and financial growth has made us a preferred choice for individuals and businesses seeking quality financial services.</p>
+                <div class="about-main" >
+                    <div class="about-main-text" >
+                        <h3>Leading Financial Solutions Provider</h3>
+                        <p>Unique Trust Investment is a premier financial company dedicated to providing innovative and reliable financial products. With years of experience in the industry, we have built a reputation for excellence and trustworthiness.</p>
+                        <p>Our commitment to customer satisfaction and financial growth has made us a preferred choice for individuals and businesses seeking quality financial services.</p>
                     </div>
-                    <div style="flex:1;min-width:300px;text-align:center;">
-                        <img src="assets/img/about-image.png" alt="About Unique Trust Investment" style="max-width:100%;height:auto;border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+                    <div class="about-main-img">
+                        <img src="assets/img/about-image.png" alt="About Unique Trust Investment">
                     </div>
                 </div>
 
-                <div style="display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;margin-top:3rem;">
-                    <div style="background:linear-gradient(135deg, #1976d2, #64b5f6);color:#fff;padding:2rem;border-radius:15px;text-align:center;flex:1;min-width:200px;box-shadow:0 4px 15px rgba(25,118,210,0.3);">
-                        <h3 style="font-size:2.5rem;margin-bottom:0.5rem;">10,000+</h3>
-                        <p style="font-size:1.1rem;">Satisfied Clients</p>
+                <div class="about-stats">
+                    <div class="about-stats-clients">
+                        <h3>10,000+</h3>
+                        <p>Satisfied Clients</p>
                     </div>
-                    <div style="background:linear-gradient(135deg, #388e3c, #66bb6a);color:#fff;padding:2rem;border-radius:15px;text-align:center;flex:1;min-width:200px;box-shadow:0 4px 15px rgba(56,142,60,0.3);">
-                        <h3 style="font-size:2.5rem;margin-bottom:0.5rem;">15+</h3>
-                        <p style="font-size:1.1rem;">Years Experience</p>
+                    <div class="about-stats-years">
+                        <h3>15+</h3>
+                        <p>Years Experience</p>
                     </div>
-                    <div style="background:linear-gradient(135deg, #f57c00, #ffb74d);color:#fff;padding:2rem;border-radius:15px;text-align:center;flex:1;min-width:200px;box-shadow:0 4px 15px rgba(245,124,0,0.3);">
-                        <h3 style="font-size:2.5rem;margin-bottom:0.5rem;">50+</h3>
-                        <p style="font-size:1.1rem;">Awards Won</p>
+                    <div class="about-stats-awards" >
+                        <h3>50+</h3>
+                        <p>Awards Won</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Enhanced Stats & Company Info Section -->
-        <section class="stats-company-section" style="background:linear-gradient(135deg, #f8f9fa 0%, #e3f2fd 100%);padding:4rem 0;">
+
+        <section class="stats-company-section" >
             <div class="container">
+
                 <!-- Company History -->
-                <div style="text-align:center;margin-bottom:4rem;">
-                    <h2 style="font-size:2.5rem;color:#1a237e;margin-bottom:1rem;">Our Journey</h2>
-                    <p style="font-size:1.2rem;color:#666;max-width:800px;margin:0 auto;line-height:1.6;">Unique Trust Investment has been serving clients with reliable financial solutions for over a decade, specializing in loans, leasing, and innovative products like Divimaga and Peramaga.</p>
+                <div class="stats-company-info" >
+                    <h2>Our Journey</h2>
+                    <p>Unique Trust Investment has been serving clients with reliable financial solutions for over a decade, specializing in loans, leasing, and innovative products like Divimaga and Peramaga.</p>
                 </div>
 
                 <!-- Mission, Vision, Values -->
-                <div style="display:flex;flex-wrap:wrap;gap:2rem;margin-bottom:4rem;">
-                    <div style="flex:1;min-width:300px;background:#fff;padding:2rem;border-radius:15px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
-                        <div style="text-align:center;margin-bottom:1.5rem;">
-                            <div style="width:60px;height:60px;background:linear-gradient(135deg, #1976d2, #64b5f6);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto;">
-                                <span style="color:#fff;font-size:1.5rem;">🎯</span>
+                <div class="stats-company-missionvisionvalues" >
+                    <div class="stats-company-mission-item">
+                        <div class="stats-company-mission-item-icon">
+                            <div class="stats-company-mission-item-icon-circle" >
+                                <span>🎯</span>
                             </div>
                         </div>
-                        <h3 style="color:#1976d2;font-size:1.5rem;margin-bottom:1rem;text-align:center;">Mission</h3>
-                        <p style="color:#555;line-height:1.6;text-align:center;">To provide fast, secure, and accessible financial services to individuals and businesses.</p>
+                        <h3>Mission</h3>
+                        <p>To provide fast, secure, and accessible financial services to individuals and businesses.</p>
                     </div>
                     
-                    <div style="flex:1;min-width:300px;background:#fff;padding:2rem;border-radius:15px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
-                        <div style="text-align:center;margin-bottom:1.5rem;">
-                            <div style="width:60px;height:60px;background:linear-gradient(135deg, #388e3c, #66bb6a);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto;">
-                                <span style="color:#fff;font-size:1.5rem;">👁️</span>
+                    <div class="stats-company-vision-item">
+                        <div class="stats-company-vision-item-icon">
+                            <div class="stats-company-vision-item-icon-circle">
+                                <span >👁️</span>
                             </div>
                         </div>
-                        <h3 style="color:#388e3c;font-size:1.5rem;margin-bottom:1rem;text-align:center;">Vision</h3>
-                        <p style="color:#555;line-height:1.6;text-align:center;">To be the most trusted financial partner in the region, known for integrity and customer focus.</p>
+                        <h3>Vision</h3>
+                        <p>To be the most trusted financial partner in the region, known for integrity and customer focus.</p>
                     </div>
                     
-                    <div style="flex:1;min-width:300px;background:#fff;padding:2rem;border-radius:15px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
-                        <div style="text-align:center;margin-bottom:1.5rem;">
-                            <div style="width:60px;height:60px;background:linear-gradient(135deg, #f57c00, #ffb74d);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto;">
+                    <div class="stats-company-values-item">
+                        <div class="stats-company-values-item-icon">
+                            <div class="stats-company-values-item-icon-circle">
                                 <span style="color:#fff;font-size:1.5rem;">💎</span>
                             </div>
                         </div>
-                        <h3 style="color:#f57c00;font-size:1.5rem;margin-bottom:1rem;text-align:center;">Values</h3>
-                        <ul style="color:#555;line-height:1.8;list-style:none;padding:0;text-align:center;">
+                        <h3 >Values</h3>
+                        <ul>
                             <li>✓ Integrity</li>
                             <li>✓ Innovation</li>
                             <li>✓ Customer Focus</li>
