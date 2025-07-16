@@ -161,29 +161,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
 
                 <!-- Team Section -->
-                <div style="text-align:center;">
-                    <h2 style="font-size:2.5rem;color:#1a237e;margin-bottom:2rem;">Meet Our Team</h2>
-                    <div style="display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;">
-                        <div class="team-member" style="background:#fff;padding:2rem;border-radius:15px;box-shadow:0 4px 20px rgba(0,0,0,0.08);text-align:center;flex:1;min-width:250px;max-width:300px;">
-                            <img src="assets/img/team1.png" alt="Jane Doe" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:1rem;border:4px solid #1976d2;">
-                            <h3 style="color:#1a237e;font-size:1.3rem;margin-bottom:0.5rem;">Jane Doe</h3>
-                            <p style="color:#1976d2;font-weight:bold;margin-bottom:0.5rem;">CEO</p>
-                            <p style="color:#666;font-size:0.9rem;">Leading our company with vision and expertise</p>
+                <div class="team-section">
+                    <h2>Meet Our Team</h2>
+                    <div class="team-container">
+                        <div class="team-member1">
+                            <img src="assets/img/team1.png" alt="Jane Doe">
+                            <h3 >Jane Doe</h3>
+                            <p class="para-main">CEO</p>
+                            <p class="para-text">Leading our company with vision and expertise</p>
                         </div>
-                        <div class="team-member" style="background:#fff;padding:2rem;border-radius:15px;box-shadow:0 4px 20px rgba(0,0,0,0.08);text-align:center;flex:1;min-width:250px;max-width:300px;">
-                            <img src="assets/img/team2.png" alt="John Smith" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:1rem;border:4px solid #1976d2;">
-                            <h3 style="color:#1a237e;font-size:1.3rem;margin-bottom:0.5rem;">John Smith</h3>
-                            <p style="color:#1976d2;font-weight:bold;margin-bottom:0.5rem;">Head of Operations</p>
-                            <p style="color:#666;font-size:0.9rem;">Ensuring smooth operations and client satisfaction</p>
+                        <div class="team-member2">
+                            <img src="assets/img/team2.png" alt="John Smith">
+                            <h3>John Smith</h3>
+                            <p class="para-main">Head of Operations</p>
+                            <p class="para-text">Ensuring smooth operations and client satisfaction</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Enhanced Services Hero Section -->
+        <!--Services Hero Section -->
         <section class="services-hero" style="background:linear-gradient(135deg, #e8f5e8 0%, #f3e5f5 100%);padding:4rem 0;position:relative;overflow:hidden;">
-            <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"grain\" width=\"100\" height=\"100\" patternUnits=\"userSpaceOnUse\"><circle cx=\"25\" cy=\"25\" r=\"1\" fill=\"%23ffffff\" opacity=\"0.1\"/><circle cx=\"75\" cy=\"75\" r=\"1\" fill=\"%23ffffff\" opacity=\"0.1\"/><circle cx=\"50\" cy=\"10\" r=\"0.5\" fill=\"%23ffffff\" opacity=\"0.1\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23grain)\"/></svg></div>
+            <div class="services-hero-main" style="position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"grain\" width=\"100\" height=\"100\" patternUnits=\"userSpaceOnUse\"><circle cx=\"25\" cy=\"25\" r=\"1\" fill=\"%23ffffff\" opacity=\"0.1\"/><circle cx=\"75\" cy=\"75\" r=\"1\" fill=\"%23ffffff\" opacity=\"0.1\"/><circle cx=\"50\" cy=\"10\" r=\"0.5\" fill=\"%23ffffff\" opacity=\"0.1\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23grain)\"/></svg></div>
             <div class="container" style="position:relative;z-index:2;">
                 <div style="text-align:center;max-width:800px;margin:0 auto;">
                     <h1 style="font-size:3rem;color:#1a237e;margin-bottom:1.5rem;font-weight:700;text-shadow:0 2px 4px rgba(0,0,0,0.1);">Our Financial Services</h1>
