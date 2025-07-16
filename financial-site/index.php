@@ -1,33 +1,33 @@
 <?php
-    require_once 'includes/db.php';
-    require_once 'includes/session.php';
+require_once 'includes/db.php';
+require_once 'includes/session.php';
 
-    $errors  = [];
-    $success = '';
+$errors  = [];
+$success = '';
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $name    = trim($_POST['name'] ?? '');
-        $email   = trim($_POST['email'] ?? '');
-        $message = trim($_POST['message'] ?? '');
-        $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name    = trim($_POST['name'] ?? '');
+    $email   = trim($_POST['email'] ?? '');
+    $message = trim($_POST['message'] ?? '');
+    $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
-        if (empty($name) || empty($email) || empty($message)) {
-            $errors[] = 'All fields are required.';
-        } elseif (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors[] = 'Invalid email address.';
-        }
-
-        if (empty($errors)) {
-            $stmt = $conn->prepare('INSERT INTO messages (user_id, name, email, message) VALUES (?, ?, ?, ?)');
-            $stmt->bind_param('isss', $user_id, $name, $email, $message);
-            if ($stmt->execute()) {
-                $success = 'Thank you for contacting us! We will get back to you soon.';
-            } else {
-                $errors[] = 'Failed to send your message. Please try again.';
-            }
-            $stmt->close();
-        }
+    if (empty($name) || empty($email) || empty($message)) {
+        $errors[] = 'All fields are required.';
+    } elseif (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = 'Invalid email address.';
     }
+
+    if (empty($errors)) {
+        $stmt = $conn->prepare('INSERT INTO messages (user_id, name, email, message) VALUES (?, ?, ?, ?)');
+        $stmt->bind_param('isss', $user_id, $name, $email, $message);
+        if ($stmt->execute()) {
+            $success = 'Thank you for contacting us! We will get back to you soon.';
+        } else {
+            $errors[] = 'Failed to send your message. Please try again.';
+        }
+        $stmt->close();
+    }
+}
 ?>
 
 
@@ -36,6 +36,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,6 +44,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <header>
         <div class="container nav-container">
@@ -76,15 +78,15 @@
         </section>
 
         <!-- About Section -->
-        <section class="about-section" >
+        <section class="about-section">
             <div class="container">
                 <div class="about-header">
                     <h2>About Unique Trust Investment</h2>
                     <p>Building financial futures with trust and expertise</p>
                 </div>
 
-                <div class="about-main" >
-                    <div class="about-main-text" >
+                <div class="about-main">
+                    <div class="about-main-text">
                         <h3>Leading Financial Solutions Provider</h3>
                         <p>Unique Trust Investment is a premier financial company dedicated to providing innovative and reliable financial products. With years of experience in the industry, we have built a reputation for excellence and trustworthiness.</p>
                         <p>Our commitment to customer satisfaction and financial growth has made us a preferred choice for individuals and businesses seeking quality financial services.</p>
@@ -103,7 +105,7 @@
                         <h3>15+</h3>
                         <p>Years Experience</p>
                     </div>
-                    <div class="about-stats-awards" >
+                    <div class="about-stats-awards">
                         <h3>50+</h3>
                         <p>Awards Won</p>
                     </div>
@@ -113,20 +115,20 @@
 
         <!-- Enhanced Stats & Company Info Section -->
 
-        <section class="stats-company-section" >
+        <section class="stats-company-section">
             <div class="container">
 
                 <!-- Company History -->
-                <div class="stats-company-info" >
+                <div class="stats-company-info">
                     <h2>Our Journey</h2>
                     <p>Unique Trust Investment has been serving clients with reliable financial solutions for over a decade, specializing in loans, leasing, and innovative products like Divimaga and Peramaga.</p>
                 </div>
 
                 <!-- Mission, Vision, Values -->
-                <div class="stats-company-missionvisionvalues" >
+                <div class="stats-company-missionvisionvalues">
                     <div class="stats-company-mission-item">
                         <div class="stats-company-mission-item-icon">
-                            <div class="stats-company-mission-item-icon-circle" >
+                            <div class="stats-company-mission-item-icon-circle">
                                 <span>🎯</span>
                             </div>
                         </div>
@@ -137,7 +139,7 @@
                     <div class="stats-company-vision-item">
                         <div class="stats-company-vision-item-icon">
                             <div class="stats-company-vision-item-icon-circle">
-                                <span >👁️</span>
+                                <span>👁️</span>
                             </div>
                         </div>
                         <h3>Vision</h3>
@@ -150,7 +152,7 @@
                                 <span style="color:#fff;font-size:1.5rem;">💎</span>
                             </div>
                         </div>
-                        <h3 >Values</h3>
+                        <h3>Values</h3>
                         <ul>
                             <li>✓ Integrity</li>
                             <li>✓ Innovation</li>
@@ -166,7 +168,7 @@
                     <div class="team-container">
                         <div class="team-member1">
                             <img src="assets/img/team1.png" alt="Jane Doe">
-                            <h3 >Jane Doe</h3>
+                            <h3>Jane Doe</h3>
                             <p class="para-main">CEO</p>
                             <p class="para-text">Leading our company with vision and expertise</p>
                         </div>
@@ -183,10 +185,11 @@
 
         <!--Services Hero Section -->
         <section class="services-hero">
-            <div class="services-hero-main" style="position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml, <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"grain\" width=\"100\" height=\"100\" patternUnits=\"userSpaceOnUse\"><circle cx=\"25\" cy=\"25\" r=\"1\" fill=\"%23ffffff\" opacity=\"0.1\"/><circle cx=\"75\" cy=\"75\" r=\"1\" fill=\"%23ffffff\" opacity=\"0.1\"/><circle cx=\"50\" cy=\"10\" r=\"0.5\" fill=\"%23ffffff\" opacity=\"0.1\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23grain)\"/" ></svg></div>
+            <div class="services-hero-main" style="position:absolute;top:0;left:0;right:0;bottom:0;">
+            </div>
 
             <div class="container">
-                <div class="service-card-header">
+                <div class="services-hero-header">
                     <h1>Our Financial Services</h1>
                     <p>Discover our comprehensive range of trusted financial solutions designed to meet your unique needs and help you achieve your financial goals.</p>
                     <div class="services-item">
@@ -203,82 +206,83 @@
                 </div>
             </div>
         </section>
+
         <!-- Enhanced Services List Section -->
-        <section class="services-list" style="padding:4rem 0;background:#fff;">
+        <section class="service-list">
             <div class="container">
-                <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:2rem;margin-top:2rem;">
-                    <div class="service-card" style="background:#fff;border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,0.1);overflow:hidden;transition:transform 0.3s ease, box-shadow 0.3s ease;position:relative;">
-                        <div style="background:linear-gradient(135deg, #1976d2, #64b5f6);padding:1rem;text-align:center;">
-                            <img src="assets/img/leasing.png" alt="Leasing" style="width:80px;height:80px;object-fit:cover;border-radius:15px;background:#fff;padding:0.5rem;">
+                <div class="service-list-grid">
+                    <div class="service-card">
+                        <div class="service-card-background-leasing">
+                            <img src="assets/img/leasing.png" alt="Leasing">
                         </div>
-                        <div style="padding:2rem;">
-                            <h3 style="color:#1a237e;font-size:1.5rem;margin-bottom:1rem;text-align:center;">Leasing</h3>
-                            <p style="color:#555;line-height:1.6;margin-bottom:1.5rem;text-align:center;">Flexible leasing options for vehicles and equipment to help you grow your business with minimal upfront costs.</p>
-                            <ul style="color:#666;line-height:1.6;margin-bottom:1.5rem;padding-left:1.5rem;">
+                        <div class="service-card-leasing">
+                            <h3>Leasing</h3>
+                            <p>Flexible leasing options for vehicles and equipment to help you grow your business with minimal upfront costs.</p>
+                            <ul>
                                 <li>Equipment financing</li>
                                 <li>Flexible payment terms</li>
                                 <li>Quick approval process</li>
                                 <li>Asset management support</li>
                             </ul>
-                            <div style="text-align:center;">
-                                <a href="contact.php" style="background:linear-gradient(135deg, #1976d2, #64b5f6);color:#fff;padding:0.75rem 1.5rem;border-radius:25px;text-decoration:none;font-weight:bold;display:inline-block;transition:all 0.3s ease;">Learn More</a>
+                            <div class="service-card-more">
+                                <a href="contact.php">Learn More</a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="service-card" style="background:#fff;border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,0.1);overflow:hidden;transition:transform 0.3s ease, box-shadow 0.3s ease;position:relative;">
-                        <div style="background:linear-gradient(135deg, #388e3c, #66bb6a);padding:1rem;text-align:center;">
-                            <img src="assets/img/divimaga.png" alt="Divimaga" style="width:80px;height:80px;object-fit:cover;border-radius:15px;background:#fff;padding:0.5rem;">
+                    <div class="service-card">
+                        <div class="service-card-background-divimaga">
+                            <img src="assets/img/divimaga.png" alt="Divimaga">
                         </div>
-                        <div style="padding:2rem;">
-                            <h3 style="color:#1a237e;font-size:1.5rem;margin-bottom:1rem;text-align:center;">Divimaga</h3>
-                            <p style="color:#555;line-height:1.6;margin-bottom:1.5rem;text-align:center;">Innovative Divimaga loans designed for your unique needs with fast approvals and competitive rates.</p>
-                            <ul style="color:#666;line-height:1.6;margin-bottom:1.5rem;padding-left:1.5rem;">
+                        <div class="service-card-divimaga">
+                            <h3>Divimaga</h3>
+                            <p>Innovative Divimaga loans designed for your unique needs with fast approvals and competitive rates.</p>
+                            <ul>
                                 <li>High-yield investment opportunities</li>
                                 <li>Professional portfolio management</li>
                                 <li>Risk-adjusted returns</li>
                                 <li>Regular performance reports</li>
                             </ul>
-                            <div style="text-align:center;">
-                                <a href="contact.php" style="background:linear-gradient(135deg, #388e3c, #66bb6a);color:#fff;padding:0.75rem 1.5rem;border-radius:25px;text-decoration:none;font-weight:bold;display:inline-block;transition:all 0.3s ease;">Learn More</a>
+                            <div class="service-card-more">
+                                <a href="contact.php">Learn More</a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="service-card" style="background:#fff;border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,0.1);overflow:hidden;transition:transform 0.3s ease, box-shadow 0.3s ease;position:relative;">
-                        <div style="background:linear-gradient(135deg, #f57c00, #ffb74d);padding:1rem;text-align:center;">
-                            <img src="assets/img/peramaga.png" alt="Peramaga" style="width:80px;height:80px;object-fit:cover;border-radius:15px;background:#fff;padding:0.5rem;">
+                    <div class="service-card" >
+                        <div class="service-card-background-peramaga">
+                            <img src="assets/img/peramaga.png" alt="Peramaga">
                         </div>
-                        <div style="padding:2rem;">
-                            <h3 style="color:#1a237e;font-size:1.5rem;margin-bottom:1rem;text-align:center;">Peramaga</h3>
-                            <p style="color:#555;line-height:1.6;margin-bottom:1.5rem;text-align:center;">Peramaga financial solutions for personal and business growth with flexible terms and competitive rates.</p>
-                            <ul style="color:#666;line-height:1.6;margin-bottom:1.5rem;padding-left:1.5rem;">
+                        <div class="service-card-peramaga">
+                            <h3>Peramaga</h3>
+                            <p>Peramaga financial solutions for personal and business growth with flexible terms and competitive rates.</p>
+                            <ul>
                                 <li>Flexible investment terms</li>
                                 <li>Competitive interest rates</li>
                                 <li>Goal-based planning</li>
                                 <li>Easy withdrawal options</li>
                             </ul>
-                            <div style="text-align:center;">
-                                <a href="contact.php" style="background:linear-gradient(135deg, #f57c00, #ffb74d);color:#fff;padding:0.75rem 1.5rem;border-radius:25px;text-decoration:none;font-weight:bold;display:inline-block;transition:all 0.3s ease;">Learn More</a>
+                            <div class="service-card-more">
+                                <a href="contact.php">Learn More</a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="service-card" style="background:#fff;border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,0.1);overflow:hidden;transition:transform 0.3s ease, box-shadow 0.3s ease;position:relative;">
-                        <div style="background:linear-gradient(135deg, #7b1fa2, #ba68c8);padding:1rem;text-align:center;">
-                            <img src="assets/img/sewana.png" alt="Sewana" style="width:80px;height:80px;object-fit:cover;border-radius:15px;background:#fff;padding:0.5rem;">
+                    <div class="service-card">
+                        <div class="service-card-background-sewana">
+                            <img src="assets/img/sewana.png" alt="Sewana">
                         </div>
-                        <div style="padding:2rem;">
-                            <h3 style="color:#1a237e;font-size:1.5rem;margin-bottom:1rem;text-align:center;">Sewana</h3>
-                            <p style="color:#555;line-height:1.6;margin-bottom:1.5rem;text-align:center;">Quick and easy Sewana loans to meet urgent financial requirements with instant approval process.</p>
-                            <ul style="color:#666;line-height:1.6;margin-bottom:1.5rem;padding-left:1.5rem;">
+                        <div class="service-card-sewana">
+                            <h3>Sewana</h3>
+                            <p>Quick and easy Sewana loans to meet urgent financial requirements with instant approval process.</p>
+                            <ul>
                                 <li>Instant approval process</li>
                                 <li>Minimal documentation</li>
                                 <li>Quick disbursement</li>
                                 <li>24/7 customer support</li>
                             </ul>
-                            <div style="text-align:center;">
-                                <a href="contact.php" style="background:linear-gradient(135deg, #7b1fa2, #ba68c8);color:#fff;padding:0.75rem 1.5rem;border-radius:25px;text-decoration:none;font-weight:bold;display:inline-block;transition:all 0.3s ease;">Learn More</a>
+                            <div class="service-card-more">
+                                <a href="contact.php" >Learn More</a>
                             </div>
                         </div>
                     </div>
@@ -349,12 +353,13 @@
         </section>
         <!-- Enhanced Contact Hero Section -->
         <section class="contact-hero" style="background:linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);padding:4rem 0;position:relative;overflow:hidden;">
-            <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"contact-pattern\" width=\"50\" height=\"50\" patternUnits=\"userSpaceOnUse\"><circle cx=\"25\" cy=\"25\" r=\"2\" fill=\"%23ffffff\" opacity=\"0.3\"/><circle cx=\"10\" cy=\"10\" r=\"1\" fill=\"%23ffffff\" opacity=\"0.2\"/><circle cx=\"40\" cy=\"40\" r=\"1\" fill=\"%23ffffff\" opacity=\"0.2\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23contact-pattern)\"/></svg></div>
+            <div style="position:absolute;top:0;left:0;right:0;bottom:0;" >
+            </div>
             <div class="container" style="position:relative;z-index:2;">
                 <div style="text-align:center;max-width:800px;margin:0 auto;">
                     <div style="background:rgba(255,255,255,0.9);padding:3rem;border-radius:25px;box-shadow:0 10px 40px rgba(0,0,0,0.1);backdrop-filter:blur(10px);">
                         <div style="width:80px;height:80px;background:linear-gradient(135deg, #1976d2, #64b5f6);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 2rem auto;">
-                        <i class="fa-regular fa-comments fa-2x" style="color:#FFFFFF;"></i>
+                            <i class="fa-regular fa-comments fa-2x" style="color:#FFFFFF;"></i>
                         </div>
                         <h1 style="font-size:3rem;color:#1a237e;margin-bottom:1.5rem;font-weight:700;">Get In Touch</h1>
                         <p style="font-size:1.3rem;color:#555;margin-bottom:2rem;line-height:1.6;">Ready to start your financial journey with us? Contact our expert team for personalized financial solutions and expert guidance.</p>
@@ -402,38 +407,38 @@
                         <?php if ($errors): ?>
                             <div style="background:#ffebee;color:#c62828;padding:1rem;border-radius:10px;margin-bottom:2rem;border-left:4px solid #c62828;">
                                 <?php foreach ($errors as $error) {
-                                        echo '<p style="margin:0.5rem 0;">' . htmlspecialchars($error) . '</p>';
-                                    }
+                                    echo '<p style="margin:0.5rem 0;">' . htmlspecialchars($error) . '</p>';
+                                }
                                 ?>
                             </div>
                         <?php endif; ?>
 
                         <?php if ($success): ?>
                             <div style="background:#e8f5e8;color:#2e7d32;padding:1rem;border-radius:10px;margin-bottom:2rem;border-left:4px solid #2e7d32;">
-                                <p style="margin:0;"><?php echo $success?></p>
+                                <p style="margin:0;"><?php echo $success ?></p>
                             </div>
                         <?php endif; ?>
 
                         <form method="post" action="" style="display:flex;flex-direction:column;gap:1.5rem;">
                             <div>
                                 <label style="display:block;color:#1a237e;font-weight:bold;margin-bottom:0.5rem;">Full Name *</label>
-                                <input type="text" name="name" required value="<?php echo htmlspecialchars($_POST['name'] ?? '')?>"
-                                       style="width:100%;padding:1rem;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;transition:border-color 0.3s ease;box-sizing:border-box;"
-                                       placeholder="Enter your full name">
+                                <input type="text" name="name" required value="<?php echo htmlspecialchars($_POST['name'] ?? '') ?>"
+                                    style="width:100%;padding:1rem;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;transition:border-color 0.3s ease;box-sizing:border-box;"
+                                    placeholder="Enter your full name">
                             </div>
 
                             <div>
                                 <label style="display:block;color:#1a237e;font-weight:bold;margin-bottom:0.5rem;">Email Address *</label>
-                                <input type="email" name="email" required value="<?php echo htmlspecialchars($_POST['email'] ?? '')?>"
-                                       style="width:100%;padding:1rem;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;transition:border-color 0.3s ease;box-sizing:border-box;"
-                                       placeholder="Enter your email address">
+                                <input type="email" name="email" required value="<?php echo htmlspecialchars($_POST['email'] ?? '') ?>"
+                                    style="width:100%;padding:1rem;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;transition:border-color 0.3s ease;box-sizing:border-box;"
+                                    placeholder="Enter your email address">
                             </div>
 
                             <div>
                                 <label style="display:block;color:#1a237e;font-weight:bold;margin-bottom:0.5rem;">Message *</label>
                                 <textarea name="message" rows="6" required
-                                          style="width:100%;padding:1rem;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;transition:border-color 0.3s ease;box-sizing:border-box;resize:vertical;font-family:inherit;"
-                                          placeholder="Tell us about your financial needs or any questions you have"><?php echo htmlspecialchars($_POST['message'] ?? '')?></textarea>
+                                    style="width:100%;padding:1rem;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;transition:border-color 0.3s ease;box-sizing:border-box;resize:vertical;font-family:inherit;"
+                                    placeholder="Tell us about your financial needs or any questions you have"><?php echo htmlspecialchars($_POST['message'] ?? '') ?></textarea>
                             </div>
 
                             <button type="submit" style="background:linear-gradient(135deg, #1976d2, #64b5f6);color:#fff;padding:1rem 2rem;border:none;border-radius:25px;font-size:1.1rem;font-weight:bold;cursor:pointer;transition:all 0.3s ease;margin-top:1rem;">
@@ -490,9 +495,10 @@
     </main>
     <footer>
         <div class="container">
-            <p>&copy;                      <?php echo date('Y'); ?> Unique Trust Investment. All rights reserved.</p>
+            <p>&copy; <?php echo date('Y'); ?> Unique Trust Investment. All rights reserved.</p>
         </div>
     </footer>
     <script src="assets/js/main.js"></script>
 </body>
+
 </html>
