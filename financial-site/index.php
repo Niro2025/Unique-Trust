@@ -1,33 +1,33 @@
 <?php
-require_once 'includes/db.php';
-require_once 'includes/session.php';
+    require_once 'includes/db.php';
+    require_once 'includes/session.php';
 
-$errors = [];
-$success = '';
+    $errors  = [];
+    $success = '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name = trim($_POST['name'] ?? '');
-    $email = trim($_POST['email'] ?? '');
-    $message = trim($_POST['message'] ?? '');
-    $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $name    = trim($_POST['name'] ?? '');
+        $email   = trim($_POST['email'] ?? '');
+        $message = trim($_POST['message'] ?? '');
+        $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
-    if (empty($name) || empty($email) || empty($message)) {
-        $errors[] = 'All fields are required.';
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = 'Invalid email address.';
-    }
-
-    if (empty($errors)) {
-        $stmt = $conn->prepare('INSERT INTO messages (user_id, name, email, message) VALUES (?, ?, ?, ?)');
-        $stmt->bind_param('isss', $user_id, $name, $email, $message);
-        if ($stmt->execute()) {
-            $success = 'Thank you for contacting us! We will get back to you soon.';
-        } else {
-            $errors[] = 'Failed to send your message. Please try again.';
+        if (empty($name) || empty($email) || empty($message)) {
+            $errors[] = 'All fields are required.';
+        } elseif (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = 'Invalid email address.';
         }
-        $stmt->close();
+
+        if (empty($errors)) {
+            $stmt = $conn->prepare('INSERT INTO messages (user_id, name, email, message) VALUES (?, ?, ?, ?)');
+            $stmt->bind_param('isss', $user_id, $name, $email, $message);
+            if ($stmt->execute()) {
+                $success = 'Thank you for contacting us! We will get back to you soon.';
+            } else {
+                $errors[] = 'Failed to send your message. Please try again.';
+            }
+            $stmt->close();
+        }
     }
-}
 ?>
 
 
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <main>
         <section class="hero">
             <div class="container">
-                
+
                 <h1>Welcome to Unique Trust Investment</h1>
                 <p>Your trusted partner for Leasing, Divimaga, Peramaga, and Speed financial solutions. We provide fast, secure, and reliable loans tailored to your needs.</p>
                 <a href="contact.php" class="cta-btn">Contact Us</a>
@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <h2>About Unique Trust Investment</h2>
                     <p>Building financial futures with trust and expertise</p>
                 </div>
-                
+
                 <div class="about-main" >
                     <div class="about-main-text" >
                         <h3>Leading Financial Solutions Provider</h3>
@@ -133,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <h3>Mission</h3>
                         <p>To provide fast, secure, and accessible financial services to individuals and businesses.</p>
                     </div>
-                    
+
                     <div class="stats-company-vision-item">
                         <div class="stats-company-vision-item-icon">
                             <div class="stats-company-vision-item-icon-circle">
@@ -143,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <h3>Vision</h3>
                         <p>To be the most trusted financial partner in the region, known for integrity and customer focus.</p>
                     </div>
-                    
+
                     <div class="stats-company-values-item">
                         <div class="stats-company-values-item-icon">
                             <div class="stats-company-values-item-icon-circle">
@@ -182,21 +182,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </section>
 
         <!--Services Hero Section -->
-        <section class="services-hero" style="background:linear-gradient(135deg, #e8f5e8 0%, #f3e5f5 100%);padding:4rem 0;position:relative;overflow:hidden;">
-            <div class="services-hero-main" style="position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"grain\" width=\"100\" height=\"100\" patternUnits=\"userSpaceOnUse\"><circle cx=\"25\" cy=\"25\" r=\"1\" fill=\"%23ffffff\" opacity=\"0.1\"/><circle cx=\"75\" cy=\"75\" r=\"1\" fill=\"%23ffffff\" opacity=\"0.1\"/><circle cx=\"50\" cy=\"10\" r=\"0.5\" fill=\"%23ffffff\" opacity=\"0.1\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23grain)\"/></svg></div>
-            <div class="container" style="position:relative;z-index:2;">
-                <div style="text-align:center;max-width:800px;margin:0 auto;">
-                    <h1 style="font-size:3rem;color:#1a237e;margin-bottom:1.5rem;font-weight:700;text-shadow:0 2px 4px rgba(0,0,0,0.1);">Our Financial Services</h1>
-                    <p style="font-size:1.3rem;color:#555;margin-bottom:2rem;line-height:1.6;">Discover our comprehensive range of trusted financial solutions designed to meet your unique needs and help you achieve your financial goals.</p>
-                    <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-top:2rem;">
-                        <div style="background:rgba(255,255,255,0.9);padding:0.5rem 1rem;border-radius:20px;box-shadow:0 2px 10px rgba(0,0,0,0.1);">
-                            <span style="color:#1976d2;font-weight:bold;">✓ Fast Approval</span>
+        <section class="services-hero">
+            <div class="services-hero-main" style="position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml, <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"grain\" width=\"100\" height=\"100\" patternUnits=\"userSpaceOnUse\"><circle cx=\"25\" cy=\"25\" r=\"1\" fill=\"%23ffffff\" opacity=\"0.1\"/><circle cx=\"75\" cy=\"75\" r=\"1\" fill=\"%23ffffff\" opacity=\"0.1\"/><circle cx=\"50\" cy=\"10\" r=\"0.5\" fill=\"%23ffffff\" opacity=\"0.1\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23grain)\"/" ></svg></div>
+
+            <div class="container">
+                <div class="service-card-header">
+                    <h1>Our Financial Services</h1>
+                    <p>Discover our comprehensive range of trusted financial solutions designed to meet your unique needs and help you achieve your financial goals.</p>
+                    <div class="services-item">
+                        <div class="services-item-fast">
+                            <span>✓ Fast Approval</span>
                         </div>
-                        <div style="background:rgba(255,255,255,0.9);padding:0.5rem 1rem;border-radius:20px;box-shadow:0 2px 10px rgba(0,0,0,0.1);">
-                            <span style="color:#388e3c;font-weight:bold;">✓ Secure & Reliable</span>
+                        <div class="services-item-secure">
+                            <span>✓ Secure & Reliable</span>
                         </div>
-                        <div style="background:rgba(255,255,255,0.9);padding:0.5rem 1rem;border-radius:20px;box-shadow:0 2px 10px rgba(0,0,0,0.1);">
-                            <span style="color:#f57c00;font-weight:bold;">✓ Expert Support</span>
+                        <div class="services-item-expert">
+                            <span>✓ Expert Support</span>
                         </div>
                     </div>
                 </div>
@@ -292,7 +293,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <h2 style="color:#fff;font-size:2.5rem;margin-bottom:1rem;">What Our Clients Say</h2>
                     <p style="color:#e3f2fd;font-size:1.1rem;max-width:600px;margin:0 auto;">Real stories from satisfied customers who trust us with their financial future</p>
                 </div>
-                
+
                 <div style="display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;">
                     <div class="testimonial" style="background:#fff;padding:2rem;border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,0.1);flex:1;min-width:280px;max-width:350px;position:relative;transition:transform 0.3s ease;">
                         <div style="position:absolute;top:-15px;left:20px;background:linear-gradient(135deg, #1976d2, #64b5f6);color:#fff;padding:0.5rem 1rem;border-radius:20px;font-size:0.9rem;font-weight:bold;">
@@ -308,7 +309,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="testimonial" style="background:#fff;padding:2rem;border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,0.1);flex:1;min-width:280px;max-width:350px;position:relative;transition:transform 0.3s ease;">
                         <div style="position:absolute;top:-15px;left:20px;background:linear-gradient(135deg, #388e3c, #66bb6a);color:#fff;padding:0.5rem 1rem;border-radius:20px;font-size:0.9rem;font-weight:bold;">
                             ⭐⭐⭐⭐⭐
@@ -323,7 +324,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="testimonial" style="background:#fff;padding:2rem;border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,0.1);flex:1;min-width:280px;max-width:350px;position:relative;transition:transform 0.3s ease;">
                         <div style="position:absolute;top:-15px;left:20px;background:linear-gradient(135deg, #f57c00, #ffb74d);color:#fff;padding:0.5rem 1rem;border-radius:20px;font-size:0.9rem;font-weight:bold;">
                             ⭐⭐⭐⭐⭐
@@ -339,7 +340,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                     </div>
                 </div>
-                
+
                 <div style="text-align:center;margin-top:3rem;">
                     <p style="color:#e3f2fd;font-size:1.1rem;margin-bottom:1rem;">Join thousands of satisfied customers</p>
                     <a href="contact.php" style="background:#fff;color:#1a237e;padding:0.75rem 2rem;border-radius:30px;text-decoration:none;font-weight:bold;transition:all 0.3s ease;display:inline-block;">Start Your Journey Today</a>
@@ -397,41 +398,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <!-- Contact Form -->
                     <div style="background:#fff;padding:3rem;border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,0.1);">
                         <h2 style="color:#1a237e;font-size:2rem;margin-bottom:2rem;text-align:center;">Send Us a Message</h2>
-                        
+
                         <?php if ($errors): ?>
                             <div style="background:#ffebee;color:#c62828;padding:1rem;border-radius:10px;margin-bottom:2rem;border-left:4px solid #c62828;">
-                                <?php foreach ($errors as $error) echo '<p style="margin:0.5rem 0;">' . htmlspecialchars($error) . '</p>'; ?>
+                                <?php foreach ($errors as $error) {
+                                        echo '<p style="margin:0.5rem 0;">' . htmlspecialchars($error) . '</p>';
+                                    }
+                                ?>
                             </div>
                         <?php endif; ?>
-                        
+
                         <?php if ($success): ?>
                             <div style="background:#e8f5e8;color:#2e7d32;padding:1rem;border-radius:10px;margin-bottom:2rem;border-left:4px solid #2e7d32;">
-                                <p style="margin:0;"><?= $success ?></p>
+                                <p style="margin:0;"><?php echo $success?></p>
                             </div>
                         <?php endif; ?>
-                        
+
                         <form method="post" action="" style="display:flex;flex-direction:column;gap:1.5rem;">
                             <div>
                                 <label style="display:block;color:#1a237e;font-weight:bold;margin-bottom:0.5rem;">Full Name *</label>
-                                <input type="text" name="name" required value="<?= htmlspecialchars($_POST['name'] ?? '') ?>" 
+                                <input type="text" name="name" required value="<?php echo htmlspecialchars($_POST['name'] ?? '')?>"
                                        style="width:100%;padding:1rem;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;transition:border-color 0.3s ease;box-sizing:border-box;"
                                        placeholder="Enter your full name">
                             </div>
-                            
+
                             <div>
                                 <label style="display:block;color:#1a237e;font-weight:bold;margin-bottom:0.5rem;">Email Address *</label>
-                                <input type="email" name="email" required value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" 
+                                <input type="email" name="email" required value="<?php echo htmlspecialchars($_POST['email'] ?? '')?>"
                                        style="width:100%;padding:1rem;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;transition:border-color 0.3s ease;box-sizing:border-box;"
                                        placeholder="Enter your email address">
                             </div>
-                            
+
                             <div>
                                 <label style="display:block;color:#1a237e;font-weight:bold;margin-bottom:0.5rem;">Message *</label>
-                                <textarea name="message" rows="6" required 
+                                <textarea name="message" rows="6" required
                                           style="width:100%;padding:1rem;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;transition:border-color 0.3s ease;box-sizing:border-box;resize:vertical;font-family:inherit;"
-                                          placeholder="Tell us about your financial needs or any questions you have"><?= htmlspecialchars($_POST['message'] ?? '') ?></textarea>
+                                          placeholder="Tell us about your financial needs or any questions you have"><?php echo htmlspecialchars($_POST['message'] ?? '')?></textarea>
                             </div>
-                            
+
                             <button type="submit" style="background:linear-gradient(135deg, #1976d2, #64b5f6);color:#fff;padding:1rem 2rem;border:none;border-radius:25px;font-size:1.1rem;font-weight:bold;cursor:pointer;transition:all 0.3s ease;margin-top:1rem;">
                                 Send Message
                             </button>
@@ -441,7 +445,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <!-- Contact Information -->
                     <div style="background:#fff;padding:3rem;border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,0.1);">
                         <h2 style="color:#1a237e;font-size:2rem;margin-bottom:2rem;text-align:center;">Get In Touch</h2>
-                        
+
                         <div style="display:flex;flex-direction:column;gap:2rem;">
                             <div class="info-block email">
                                 <div class="info-icon email">
@@ -471,7 +475,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div style="margin-top:3rem;padding:2rem;background:linear-gradient(135deg, #e3f2fd, #f3e5f5);border-radius:15px;text-align:center;">
                             <h3 style="color:#1a237e;margin-bottom:1rem;">Business Hours</h3>
                             <p style="color:#555;margin:0.5rem 0;"><strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM</p>
@@ -486,7 +490,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </main>
     <footer>
         <div class="container">
-            <p>&copy; <?php echo date('Y'); ?> Unique Trust Investment. All rights reserved.</p>
+            <p>&copy;                      <?php echo date('Y'); ?> Unique Trust Investment. All rights reserved.</p>
         </div>
     </footer>
     <script src="assets/js/main.js"></script>
