@@ -291,55 +291,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </section>
 
         <!-- Enhanced Testimonials Section -->
-        <section class="testimonials-section" style="background:linear-gradient(135deg, #1a237e 0%, #3949ab 100%);padding:4rem 0;margin-top:2rem;">
+        <section class="testimonials-section">
             <div class="container">
-                <div style="text-align:center;margin-bottom:3rem;">
-                    <h2 style="color:#fff;font-size:2.5rem;margin-bottom:1rem;">What Our Clients Say</h2>
-                    <p style="color:#e3f2fd;font-size:1.1rem;max-width:600px;margin:0 auto;">Real stories from satisfied customers who trust us with their financial future</p>
+                <div class="testimonials-header">
+                    <h2>What Our Clients Say</h2>
+                    <p>Real stories from satisfied customers who trust us with their financial future</p>
                 </div>
 
-                <div style="display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;">
-                    <div class="testimonial" style="background:#fff;padding:2rem;border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,0.1);flex:1;min-width:280px;max-width:350px;position:relative;transition:transform 0.3s ease;">
-                        <div style="position:absolute;top:-15px;left:20px;background:linear-gradient(135deg, #1976d2, #64b5f6);color:#fff;padding:0.5rem 1rem;border-radius:20px;font-size:0.9rem;font-weight:bold;">
+                <div class="testimonials-body">
+                    <div class="testimonial1">
+                        <div class="testimonials-rating1">
                             ⭐⭐⭐⭐⭐
                         </div>
-                        <p style="font-style:italic;margin:1rem 0 1.5rem 0;color:#555;line-height:1.6;font-size:1rem;">"Unique Trust Investment helped me achieve my financial goals with their Divimaga product. The returns exceeded my expectations and the customer service was exceptional!"</p>
-                        <div style="display:flex;align-items:center;gap:1rem;border-top:1px solid #f0f0f0;padding-top:1rem;">
-                            <img src="assets/img/client1.png" alt="Sarah Johnson" style="width:60px;height:60px;border-radius:50%;object-fit:cover;border:3px solid #1976d2;">
+                        <p>"Unique Trust Investment helped me achieve my financial goals with their Divimaga product. The returns exceeded my expectations and the customer service was exceptional!"</p>
+                        <div class="testimonials-text">
+                            <img src="assets/img/client1.png" alt="Sarah Johnson">
                             <div>
-                                <strong style="color:#1a237e;font-size:1.1rem;">Sarah Johnson</strong><br>
-                                <small style="color:#1976d2;font-weight:bold;">Business Owner</small><br>
-                                <small style="color:#666;">Divimaga Client</small>
+                                <strong>Sarah Johnson</strong><br>
+                                <small class="small-owner">Business Owner</small><br>
+                                <small class="small-client">Divimaga Client</small>
                             </div>
                         </div>
                     </div>
 
-                    <div class="testimonial" style="background:#fff;padding:2rem;border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,0.1);flex:1;min-width:280px;max-width:350px;position:relative;transition:transform 0.3s ease;">
-                        <div style="position:absolute;top:-15px;left:20px;background:linear-gradient(135deg, #388e3c, #66bb6a);color:#fff;padding:0.5rem 1rem;border-radius:20px;font-size:0.9rem;font-weight:bold;">
+                    <div class="testimonial2">
+                        <div class="testimonials-rating2">
                             ⭐⭐⭐⭐⭐
                         </div>
-                        <p style="font-style:italic;margin:1rem 0 1.5rem 0;color:#555;line-height:1.6;font-size:1rem;">"The Peramaga savings plan is perfect for my needs. Flexible terms and great customer service make all the difference. Highly recommended!"</p>
-                        <div style="display:flex;align-items:center;gap:1rem;border-top:1px solid #f0f0f0;padding-top:1rem;">
-                            <img src="assets/img/client2.png" alt="Michael Chen" style="width:60px;height:60px;border-radius:50%;object-fit:cover;border:3px solid #388e3c;">
+                        <p>"The Peramaga savings plan is perfect for my needs. Flexible terms and great customer service make all the difference. Highly recommended!"</p>
+                        <div class="testimonials-text">
+                            <img src="assets/img/client2.png" alt="Michael Chen">
                             <div>
-                                <strong style="color:#1a237e;font-size:1.1rem;">Michael Chen</strong><br>
-                                <small style="color:#388e3c;font-weight:bold;">Software Engineer</small><br>
-                                <small style="color:#666;">Peramaga Client</small>
+                                <strong>Michael Chen</strong><br>
+                                <small class="small-owner">Software Engineer</small><br>
+                                <small class="small-client">Peramaga Client</small>
                             </div>
                         </div>
                     </div>
 
-                    <div class="testimonial" style="background:#fff;padding:2rem;border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,0.1);flex:1;min-width:280px;max-width:350px;position:relative;transition:transform 0.3s ease;">
-                        <div style="position:absolute;top:-15px;left:20px;background:linear-gradient(135deg, #f57c00, #ffb74d);color:#fff;padding:0.5rem 1rem;border-radius:20px;font-size:0.9rem;font-weight:bold;">
+                    <div class="testimonial3">
+                        <div class="testimonials-rating3">
                             ⭐⭐⭐⭐⭐
                         </div>
-                        <p style="font-style:italic;margin:1rem 0 1.5rem 0;color:#555;line-height:1.6;font-size:1rem;">"Their leasing solutions helped our company expand without the heavy upfront costs. The process was smooth and the team was incredibly professional!"</p>
-                        <div style="display:flex;align-items:center;gap:1rem;border-top:1px solid #f0f0f0;padding-top:1rem;">
-                            <img src="assets/img/client3.png" alt="Emily Rodriguez" style="width:60px;height:60px;border-radius:50%;object-fit:cover;border:3px solid #f57c00;">
+                        <p style="">"Their leasing solutions helped our company expand without the heavy upfront costs. The process was smooth and the team was incredibly professional!"</p>
+                        <div class="testimonials-text" style="">
+                            <img src="assets/img/client3.png" alt="Emily Rodriguez" style="">
                             <div>
-                                <strong style="color:#1a237e;font-size:1.1rem;">Emily Rodriguez</strong><br>
-                                <small style="color:#f57c00;font-weight:bold;">Operations Manager</small><br>
-                                <small style="color:#666;">Leasing Client</small>
+                                <strong style="">Emily Rodriguez</strong><br>
+                                <small class="small-owner" style="">Operations Manager</small><br>
+                                <small class="small-client" style="">Leasing Client</small>
                             </div>
                         </div>
                     </div>
