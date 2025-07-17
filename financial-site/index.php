@@ -334,12 +334,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             ⭐⭐⭐⭐⭐
                         </div>
                         <p style="">"Their leasing solutions helped our company expand without the heavy upfront costs. The process was smooth and the team was incredibly professional!"</p>
-                        <div class="testimonials-text" style="">
-                            <img src="assets/img/client3.png" alt="Emily Rodriguez" style="">
+                        <div class="testimonials-text">
+                            <img src="assets/img/client3.png" alt="Emily Rodriguez">
                             <div>
-                                <strong style="">Emily Rodriguez</strong><br>
-                                <small class="small-owner" style="">Operations Manager</small><br>
-                                <small class="small-client" style="">Leasing Client</small>
+                                <strong>Emily Rodriguez</strong><br>
+                                <small class="small-owner" >Operations Manager</small><br>
+                                <small class="small-client" >Leasing Client</small>
                             </div>
                         </div>
                     </div>
