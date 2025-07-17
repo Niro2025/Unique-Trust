@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <header>
         <div class="container nav-container">
             <div class="logo">
-                <img src="assets/img/logo.png" alt="Unique Trust Investment Logo" style="height:100px;">
+                <img src="assets/img/logo.png" alt="Unique Trust Investment Logo" class="logo-img" style="height:150px;">
                 <span class="company-name">Unique Trust Investment</span>
             </div>
             <nav>
@@ -484,11 +484,60 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </section>
         <!-- Call to Action Section -->
     </main>
-    <footer>
-        <div class="container">
-            <p>&copy; <?php echo date('Y'); ?> Unique Trust Investment. All rights reserved.</p>
+    <footer class="site-footer">
+    <div class="footer-top">
+        <div class="container footer-social">
+            <span>Follow us:</span>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
-    </footer>
+    </div>
+    <div class="footer-middle">
+        <div class="container footer-columns">
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="about.php">About Us</a></li>
+                    <li><a href="services.php">Services</a></li>
+                    <li><a href="contact.php">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="#">Our History</a></li>
+                    <li><a href="#">Mission & Vision</a></li>
+                    <li><a href="#">Team</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li>123 Main Street, Colombo, Sri Lanka</li>
+                    <li>info@uniquetrustinvestment.com</li>
+                    <li>+94 11 234 5678</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <p>Unique Trust Investment PLC, 123 Main Street, Colombo, Sri Lanka.</p>
+            <p>&copy; <?php echo date('Y'); ?> Unique Trust Investment. All rights reserved.</p>
+            <p class="dev-credit">Design & Development by <a href="#">Niro</a></p>
+        </div>
+    </div>
+</footer>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
