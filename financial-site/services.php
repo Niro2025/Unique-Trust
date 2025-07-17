@@ -24,11 +24,10 @@
         </div>
     </header>
     <main>
-        <section class="hero">
+        <section class="services-hero">
             <div class="container">
                 <h1>Our Financial Services</h1>
                 <p>Explore our range of trusted financial solutions.</p>
-                <a href="contact.php" class="cta-btn">Contact Us</a>
             </div>
         </section>
         <section class="services-list container">
