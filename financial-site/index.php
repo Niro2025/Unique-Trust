@@ -346,28 +346,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 </div>
 
-                <div style="text-align:center;margin-top:3rem;">
+                <div class="testimonials-end-text" style="text-align:center;margin-top:3rem;">
                     <p style="color:#e3f2fd;font-size:1.1rem;margin-bottom:1rem;">Join thousands of satisfied customers</p>
                     <a href="contact.php" style="background:#fff;color:#1a237e;padding:0.75rem 2rem;border-radius:30px;text-decoration:none;font-weight:bold;transition:all 0.3s ease;display:inline-block;">Start Your Journey Today</a>
                 </div>
             </div>
         </section>
+
         <!-- Enhanced Contact Hero Section -->
-        <section class="contact-hero" style="background:linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);padding:4rem 0;position:relative;overflow:hidden;">
-            <div style="position:absolute;top:0;left:0;right:0;bottom:0;" >
+        <section class="contactus-hero" style="">
+            <div class="contactus-section" style="" >
             </div>
-            <div class="container" style="position:relative;z-index:2;">
-                <div style="text-align:center;max-width:800px;margin:0 auto;">
-                    <div style="background:rgba(255,255,255,0.9);padding:3rem;border-radius:25px;box-shadow:0 10px 40px rgba(0,0,0,0.1);backdrop-filter:blur(10px);">
-                        <div style="width:80px;height:80px;background:linear-gradient(135deg, #1976d2, #64b5f6);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 2rem auto;">
-                            <i class="fa-regular fa-comments fa-2x" style="color:#FFFFFF;"></i>
+            <div class="contactus-container" style="">
+                <div class="contactus-heading" style="">
+                    <div class="contactus-background" style="">
+                        <div class="contactus-header" style="">
+                            <i class="fa-regular fa-comments fa-2x" style=""></i>
                         </div>
-                        <h1 style="font-size:3rem;color:#1a237e;margin-bottom:1.5rem;font-weight:700;">Get In Touch</h1>
-                        <p style="font-size:1.3rem;color:#555;margin-bottom:2rem;line-height:1.6;">Ready to start your financial journey with us? Contact our expert team for personalized financial solutions and expert guidance.</p>
-                        <div style="display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;margin-top:2rem;">
+                        <h1 style="">Get In Touch</h1>
+                        <p class="contactus-header-info" style="">Ready to start your financial journey with us? Contact our expert team for personalized financial solutions and expert guidance.</p>
+                        <div class="contactus-info-section" style="">
                             <div class="info-block email">
                                 <div class="info-icon email">
-                                    <i class="fa-regular fa-comments fa-2x" style="color:#1976d2;"></i>
+                                    <i class="fa-regular fa-comments fa-2x" style=""></i>
                                 </div>
                                 <div>
                                     <h3>Email Us</h3>
@@ -376,7 +377,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
                             <div class="info-block phone">
                                 <div class="info-icon phone">
-                                    <i class="fa-solid fa-headset fa-2x" style="color:#1976d2;"></i>
+                                    <i class="fa-solid fa-headset fa-2x" style=""></i>
                                 </div>
                                 <div>
                                     <h3>Call Us</h3>
@@ -385,7 +386,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
                             <div class="info-block address">
                                 <div class="info-icon address">
-                                    <i class="fa-regular fa-map fa-2x" style="color:#1976d2;"></i>
+                                    <i class="fa-regular fa-map fa-2x" style=""></i>
                                 </div>
                                 <div>
                                     <h3>Visit Us</h3>
