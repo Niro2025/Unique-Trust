@@ -1,4 +1,3 @@
-
 <?php
 require_once 'includes/db.php';
 require_once 'includes/session.php';
@@ -44,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Unique Trust Investment - Home</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
 </head>
 
 <body>
@@ -250,7 +250,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                     </div>
 
-                    <div class="service-card" >
+                    <div class="service-card">
                         <div class="service-card-background-peramaga">
                             <img src="assets/img/peramaga.png" alt="Peramaga">
                         </div>
@@ -283,7 +283,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <li>24/7 customer support</li>
                             </ul>
                             <div class="service-card-more">
-                                <a href="contact.php" >Learn More</a>
+                                <a href="contact.php">Learn More</a>
                             </div>
                         </div>
                     </div>
@@ -339,8 +339,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <img src="assets/img/client3.png" alt="Emily Rodriguez">
                             <div>
                                 <strong>Emily Rodriguez</strong><br>
-                                <small class="small-owner" >Operations Manager</small><br>
-                                <small class="small-client" >Leasing Client</small>
+                                <small class="small-owner">Operations Manager</small><br>
+                                <small class="small-client">Leasing Client</small>
                             </div>
                         </div>
                     </div>
@@ -355,7 +355,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <!-- Enhanced Contact Hero Section -->
         <section class="contactus-hero">
-            <div class="contactus-section" >
+            <div class="contactus-section">
             </div>
             <div class="contactus-container">
                 <div class="contactus-heading">
@@ -406,14 +406,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </section>
 
 
-        
+
         <!-- Contact Message Form Section -->
         <section class="contact-form-section">
-            <div class="contact-form-container">
+            <div class="container">
                 <div class="contact-form-main">
                     <!-- Contact Form -->
                     <div class="contact-form">
-                        <h2 style="">Send Us a Message</h2>
+                        <h2>Send Us a Message</h2>
 
                         <?php if ($errors): ?>
                             <div class="contact-form-error">
@@ -431,24 +431,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <?php endif; ?>
 
                         <form method="post" action="">
-                            <div class="contact-form-name" >
+                            <div class="contact-form-name">
                                 <label>Full Name *</label>
                                 <input type="text" name="name" required value="<?php echo htmlspecialchars($_POST['name'] ?? '') ?>"
-                                
+
                                     placeholder="Enter your full name">
                             </div>
 
                             <div class="contact-form-email">
                                 <label>Email Address *</label>
                                 <input type="email" name="email" required value="<?php echo htmlspecialchars($_POST['email'] ?? '') ?>"
-                                
+
                                     placeholder="Enter your email address">
                             </div>
 
-                            <div class="contact-form-message" >
+                            <div class="contact-form-message">
                                 <label>Message *</label>
                                 <textarea name="message" rows="6" required
-                                
+
                                     placeholder="Tell us about your financial needs or any questions you have"><?php echo htmlspecialchars($_POST['message'] ?? '') ?></textarea>
                             </div>
 
@@ -457,9 +457,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </button>
                         </form>
                     </div>
+                    <div class="contact-form-map" id="googleMap">
+                            <h1>Location</h1>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d699.663363369387!2d79.90947112474417!3d7.252941149484347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2slk!4v1753366501545!5m2!1sen!2slk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                    </div>
 
                     <!-- Contact Information -->
-<!--                    <div style="background:#fff;padding:3rem;border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,0.1);">
+                    <!--                    <div style="background:#fff;padding:3rem;border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,0.1);">
                         <h2 style="color:#1a237e;font-size:2rem;margin-bottom:2rem;text-align:center;">Get In Touch</h2>
 
                         <div style="display:flex;flex-direction:column;gap:2rem;">
@@ -499,7 +504,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <p style="color:#555;margin:0.5rem 0;"><strong>Sunday:</strong> Closed</p>
                         </div>
                     </div>
-                        -->    
+                        -->
 
                 </div>
             </div>
@@ -508,62 +513,71 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <!-- Call to Action Section -->
     </main>
-   
-    <footer class="site-footer">
-    <div class="footer-top">
-        <div class="container footer-social">
-            <span>Follow us:</span>
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-        </div>
-    </div>
-    <div class="footer-middle">
-        <div class="container footer-columns">
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="about.php">About Us</a></li>
-                    <li><a href="services.php">Services</a></li>
-                    <li><a href="contact.php">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>About Us</h4>
-                <ul>
-                    <li><a href="#">Our History</a></li>
-                    <li><a href="#">Mission & Vision</a></li>
-                    <li><a href="#">Team</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Support</h4>
-                <ul>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <ul>
-                    <li>123 Main Street, Colombo, Sri Lanka</li>
-                    <li>info@uniquetrustinvestment.com</li>
-                    <li>+94 11 234 5678</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <div class="container">
-            <p>Unique Trust Investment PLC, 123 Main Street, Colombo, Sri Lanka.</p>
-            <p>&copy; <?php echo date('Y'); ?> Unique Trust Investment. All rights reserved.</p>
-            <p class="dev-credit">Design & Development by <a href="#">Niro</a></p>
-        </div>
-    </div>
-</footer>
 
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="container footer-social">
+                <span>Follow us:</span>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-middle">
+            <div class="container footer-columns">
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="about.php">About Us</a></li>
+                        <li><a href="services.php">Services</a></li>
+                        <li><a href="contact.php">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>About Us</h4>
+                    <ul>
+                        <li><a href="#">Our History</a></li>
+                        <li><a href="#">Mission & Vision</a></li>
+                        <li><a href="#">Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>123 Main Street, Colombo, Sri Lanka</li>
+                        <li>info@uniquetrustinvestment.com</li>
+                        <li>+94 11 234 5678</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>Unique Trust Investment PLC, 123 Main Street, Colombo, Sri Lanka.</p>
+                <p>&copy; <?php echo date('Y'); ?> Unique Trust Investment. All rights reserved.</p>
+                <p class="dev-credit">Design & Development by <a href="#">Niro</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function myMap() {
+            var mapProp = {
+                center: new google.maps.LatLng(7.252966, 79.909966),
+                zoom: 5,
+            };
+            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+        }
+    </script>
 
     <script src="assets/js/main.js"></script>
 </body>

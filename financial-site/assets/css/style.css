@@ -1257,19 +1257,40 @@ footer {
   margin: 0.5rem 0;
 }
 
+
+
+
 /*Contact Message Form*/
 
 .contact-form-section {
   padding: 4rem 0;
-  background: #3818ee;
+   background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%);
 }
 .contact-form-main {
-  padding-left: 30px;
   display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 3rem;
-  align-items: end;
-  color: #261a7e;
+  align-items: start;
 }
+
+.contact-form-map{
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form-map h1{
+  color: #1a237e;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.contact-form-map iframe{
+ border-radius: 10px;
+ box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
 .contact-form {
   background: #fff;
   padding: 3rem;
@@ -1363,6 +1384,8 @@ footer {
   transition: all 0.3s ease;
   margin-top: 1rem;
 }
+
+
 
 /*
 
