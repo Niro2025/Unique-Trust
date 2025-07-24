@@ -1093,7 +1093,6 @@ footer {
   color: #666;
 }
 
-
 .testimonial3 {
   background: #fff;
   padding: 2rem;
@@ -1150,6 +1149,232 @@ footer {
   color: #666;
 }
 
+.testimonials-end-text {
+  text-align: center;
+  margin-top: 3rem;
+}
+.testimonials-end-text p {
+  color: #e3f2fd;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+.testimonials-end-text a {
+  background: #fff;
+  color: #1a237e;
+  padding: 0.75rem 2rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+/*Contact Us Section*/
+
+.contactus-hero {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+}
+.contactus-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.contactus-container {
+  position: relative;
+  z-index: 2;
+}
+.contactus-heading {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.contactus-background {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 3rem;
+  border-radius: 25px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+.contactus-header {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #1976d2, #64b5f6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem auto;
+}
+.contactus-header i {
+  color: #ffffff;
+}
+.contactus-background h1 {
+  font-size: 3rem;
+  color: #1a237e;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+.contactus-background .contactus-header-info {
+  font-size: 1.3rem;
+  color: #555;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+.contactus-info-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.contactus-info-section .info-block .email i {
+  color: #1976d2;
+}
+.contactus-info-section .info-block .phone i {
+  color: #1976d2;
+}
+.contactus-info-section .info-block .address i {
+  color: #1976d2;
+}
+.contactus-business {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+  border-radius: 15px;
+  text-align: center;
+}
+.contactus-business h3 {
+  color: #1a237e;
+  margin-bottom: 1rem;
+}
+.contactus-business p {
+  color: #555;
+  margin: 0.5rem 0;
+}
+
+/*Contact Message Form*/
+
+.contact-form-section {
+  padding: 4rem 0;
+  background: #3818ee;
+}
+.contact-form-main {
+  padding-left: 30px;
+  display: grid;
+  gap: 3rem;
+  align-items: end;
+  color: #261a7e;
+}
+.contact-form {
+  background: #fff;
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+.contact-form-error {
+  background: #ffebee;
+  color: #c62828;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  border-left: 4px solid #c62828;
+}
+.contact-form-success {
+  background: #e8f5e8;
+  color: #2e7d32;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  border-left: 4px solid #2e7d32;
+}
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.contact-form h2 {
+  color: #1a237e;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.contact-form-name label {
+  display: block;
+  color: #1a237e;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.contact-form-email label {
+  display: block;
+  color: #1a237e;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.contact-form-message label {
+  display: block;
+  color: #1a237e;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.contact-form-name input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+.contact-form-email input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+.contact-form-message textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+  resize: vertical;
+  font-family: inherit;
+}
+.contact-form-button {
+  background: linear-gradient(135deg, #1976d2, #64b5f6);
+  color: #fff;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+/*
+
+ 
+
+ 
+
+
+
+
+
+*/
 
 /* Mission/Vision/Values */
 .icon-circle.mission,
@@ -1179,45 +1404,37 @@ footer {
   );
   color: var(--primary-green);
 }
- /*Contact Us Section*/
-
- .contactus-hero{background:linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);padding:4rem 0;position:relative;overflow:hidden;}
- .contactus-section{position:absolute;top:0;left:0;right:0;bottom:0;}
-.contactus-container{position:relative;z-index:2;}
-.contactus-heading{text-align:center;max-width:800px;margin:0 auto;}
-.contactus-background{background:rgba(255,255,255,0.9);padding:3rem;border-radius:25px;box-shadow:0 10px 40px rgba(0,0,0,0.1);backdrop-filter:blur(10px);}
- .contactus-header{width:80px;height:80px;background:linear-gradient(135deg, #1976d2, #64b5f6);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 2rem auto;}
- .contactus-header i{color:#FFFFFF;}
-.contactus-background h1{font-size:3rem;color:#1a237e;margin-bottom:1.5rem;font-weight:700;}
-.contactus-background .contactus-header-info{font-size:1.3rem;color:#555;margin-bottom:2rem;line-height:1.6;}
-.contactus-info-section{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;margin-top:2rem;}
-.contactus-info-section .info-block .email i{color:#1976d2;}
-.contactus-info-section .info-block .phone i{color:#1976d2;}
-.contactus-info-section .info-block .address i{color:#1976d2;}
-
-/*
-
- 
-
- 
-
-
-
-
-
-*/
-
-
 
 /*About Page*/
 /* .container-nav-container .logo{size:100px;} */
-.container-nav-container .logo-img{width:100px;height:100px;}
-.container-nav-container .company-name{font-size:2rem;font-weight:bold;}
-.container-nav-container .nav-links{display:flex;gap:2rem;list-style:none;margin:0;padding:0;}
-.container-nav-container .nav-links li{margin:0;padding:0;}
-.container-nav-container .nav-links li a{text-decoration:none;color:#000;font-size:1.2rem;font-weight:bold;}
-.container-nav-container .nav-links li a:hover{color:#261a7e;}
-
+.container-nav-container .logo-img {
+  width: 100px;
+  height: 100px;
+}
+.container-nav-container .company-name {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.container-nav-container .nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.container-nav-container .nav-links li {
+  margin: 0;
+  padding: 0;
+}
+.container-nav-container .nav-links li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.container-nav-container .nav-links li a:hover {
+  color: #261a7e;
+}
 
 /* --- Modern Footer Styles --- */
 .site-footer {
@@ -1338,10 +1555,3 @@ footer {
 .footer-social i {
   vertical-align: middle;
 }
-
-
-
-
-
-
-

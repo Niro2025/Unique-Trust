@@ -334,7 +334,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="testimonials-rating3">
                             ⭐⭐⭐⭐⭐
                         </div>
-                        <p style="">"Their leasing solutions helped our company expand without the heavy upfront costs. The process was smooth and the team was incredibly professional!"</p>
+                        <p>"Their leasing solutions helped our company expand without the heavy upfront costs. The process was smooth and the team was incredibly professional!"</p>
                         <div class="testimonials-text">
                             <img src="assets/img/client3.png" alt="Emily Rodriguez">
                             <div>
@@ -346,29 +346,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 </div>
 
-                <div class="testimonials-end-text" style="text-align:center;margin-top:3rem;">
-                    <p style="color:#e3f2fd;font-size:1.1rem;margin-bottom:1rem;">Join thousands of satisfied customers</p>
-                    <a href="contact.php" style="background:#fff;color:#1a237e;padding:0.75rem 2rem;border-radius:30px;text-decoration:none;font-weight:bold;transition:all 0.3s ease;display:inline-block;">Start Your Journey Today</a>
+                <div class="testimonials-end-text">
+                    <p>Join thousands of satisfied customers</p>
+                    <a href="contact.php">Start Your Journey Today</a>
                 </div>
             </div>
         </section>
 
         <!-- Enhanced Contact Hero Section -->
-        <section class="contactus-hero" style="">
-            <div class="contactus-section" style="" >
+        <section class="contactus-hero">
+            <div class="contactus-section" >
             </div>
-            <div class="contactus-container" style="">
-                <div class="contactus-heading" style="">
-                    <div class="contactus-background" style="">
-                        <div class="contactus-header" style="">
-                            <i class="fa-regular fa-comments fa-2x" style=""></i>
+            <div class="contactus-container">
+                <div class="contactus-heading">
+                    <div class="contactus-background">
+                        <div class="contactus-header">
+                            <i class="fa-regular fa-comments fa-2x"></i>
                         </div>
-                        <h1 style="">Get In Touch</h1>
-                        <p class="contactus-header-info" style="">Ready to start your financial journey with us? Contact our expert team for personalized financial solutions and expert guidance.</p>
-                        <div class="contactus-info-section" style="">
+                        <h1>Get In Touch</h1>
+                        <p class="contactus-header-info">Ready to start your financial journey with us? Contact our expert team for personalized financial solutions and expert guidance.</p>
+                        <div class="contactus-info-section">
                             <div class="info-block email">
                                 <div class="info-icon email">
-                                    <i class="fa-regular fa-comments fa-2x" style=""></i>
+                                    <i class="fa-regular fa-comments fa-2x"></i>
                                 </div>
                                 <div>
                                     <h3>Email Us</h3>
@@ -377,7 +377,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
                             <div class="info-block phone">
                                 <div class="info-icon phone">
-                                    <i class="fa-solid fa-headset fa-2x" style=""></i>
+                                    <i class="fa-solid fa-headset fa-2x"></i>
                                 </div>
                                 <div>
                                     <h3>Call Us</h3>
@@ -386,7 +386,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
                             <div class="info-block address">
                                 <div class="info-icon address">
-                                    <i class="fa-regular fa-map fa-2x" style=""></i>
+                                    <i class="fa-regular fa-map fa-2x"></i>
                                 </div>
                                 <div>
                                     <h3>Visit Us</h3>
@@ -394,20 +394,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </div>
                             </div>
                         </div>
+                        <div class="contactus-business" style="margin-top:3rem;padding:2rem;background:linear-gradient(135deg, #e3f2fd, #f3e5f5);border-radius:15px;text-align:center;">
+                            <h3 style="">Business Hours</h3>
+                            <p style=""><strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM</p>
+                            <p style=""><strong>Saturday:</strong> 9:00 AM - 2:00 PM</p>
+                            <p style=""><strong>Sunday:</strong> Closed</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Enhanced Contact Form Section -->
-        <section class="contact-form-section" style="padding:4rem 0;background:#f8f9fa;">
-            <div class="container">
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
+
+
+        
+        <!-- Contact Message Form Section -->
+        <section class="contact-form-section">
+            <div class="contact-form-container">
+                <div class="contact-form-main">
                     <!-- Contact Form -->
-                    <div style="background:#fff;padding:3rem;border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,0.1);">
-                        <h2 style="color:#1a237e;font-size:2rem;margin-bottom:2rem;text-align:center;">Send Us a Message</h2>
+                    <div class="contact-form">
+                        <h2 style="">Send Us a Message</h2>
 
                         <?php if ($errors): ?>
-                            <div style="background:#ffebee;color:#c62828;padding:1rem;border-radius:10px;margin-bottom:2rem;border-left:4px solid #c62828;">
+                            <div class="contact-form-error">
                                 <?php foreach ($errors as $error) {
                                     echo '<p style="margin:0.5rem 0;">' . htmlspecialchars($error) . '</p>';
                                 }
@@ -416,41 +425,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <?php endif; ?>
 
                         <?php if ($success): ?>
-                            <div style="background:#e8f5e8;color:#2e7d32;padding:1rem;border-radius:10px;margin-bottom:2rem;border-left:4px solid #2e7d32;">
+                            <div class="contact-form-success">
                                 <p style="margin:0;"><?php echo $success ?></p>
                             </div>
                         <?php endif; ?>
 
-                        <form method="post" action="" style="display:flex;flex-direction:column;gap:1.5rem;">
-                            <div>
-                                <label style="display:block;color:#1a237e;font-weight:bold;margin-bottom:0.5rem;">Full Name *</label>
+                        <form method="post" action="">
+                            <div class="contact-form-name" >
+                                <label>Full Name *</label>
                                 <input type="text" name="name" required value="<?php echo htmlspecialchars($_POST['name'] ?? '') ?>"
-                                    style="width:100%;padding:1rem;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;transition:border-color 0.3s ease;box-sizing:border-box;"
+                                
                                     placeholder="Enter your full name">
                             </div>
 
-                            <div>
-                                <label style="display:block;color:#1a237e;font-weight:bold;margin-bottom:0.5rem;">Email Address *</label>
+                            <div class="contact-form-email">
+                                <label>Email Address *</label>
                                 <input type="email" name="email" required value="<?php echo htmlspecialchars($_POST['email'] ?? '') ?>"
-                                    style="width:100%;padding:1rem;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;transition:border-color 0.3s ease;box-sizing:border-box;"
+                                
                                     placeholder="Enter your email address">
                             </div>
 
-                            <div>
-                                <label style="display:block;color:#1a237e;font-weight:bold;margin-bottom:0.5rem;">Message *</label>
+                            <div class="contact-form-message" >
+                                <label>Message *</label>
                                 <textarea name="message" rows="6" required
-                                    style="width:100%;padding:1rem;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;transition:border-color 0.3s ease;box-sizing:border-box;resize:vertical;font-family:inherit;"
+                                
                                     placeholder="Tell us about your financial needs or any questions you have"><?php echo htmlspecialchars($_POST['message'] ?? '') ?></textarea>
                             </div>
 
-                            <button type="submit" style="background:linear-gradient(135deg, #1976d2, #64b5f6);color:#fff;padding:1rem 2rem;border:none;border-radius:25px;font-size:1.1rem;font-weight:bold;cursor:pointer;transition:all 0.3s ease;margin-top:1rem;">
+                            <button class="contact-form-button" type="submit">
                                 Send Message
                             </button>
                         </form>
                     </div>
 
                     <!-- Contact Information -->
-                    <div style="background:#fff;padding:3rem;border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,0.1);">
+<!--                    <div style="background:#fff;padding:3rem;border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,0.1);">
                         <h2 style="color:#1a237e;font-size:2rem;margin-bottom:2rem;text-align:center;">Get In Touch</h2>
 
                         <div style="display:flex;flex-direction:column;gap:2rem;">
@@ -490,9 +499,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <p style="color:#555;margin:0.5rem 0;"><strong>Sunday:</strong> Closed</p>
                         </div>
                     </div>
+                        -->    
+
                 </div>
             </div>
         </section>
+
+
         <!-- Call to Action Section -->
     </main>
    
