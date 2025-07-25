@@ -23,8 +23,8 @@ body {
 :root {
   --primary-blue: #1976d2;
   --secondary-blue: #64b5f6;
-  --primary-green: #388e3c;
-  --secondary-green: #66bb6a;
+  --primary-green: #009900;
+  --secondary-green: #66cc66;
   --neutral-bg: #f8f9fa;
   --neutral-dark: #1a237e;
   --white: #fff;
@@ -180,10 +180,7 @@ footer {
     display: none;
   }
 
-  .nav-links.open {
-    display: flex;
-  }
-
+  
   .hamburger {
     display: flex;
   }
@@ -196,9 +193,7 @@ footer {
 
 /* About, Services, Contact page styles (basic) */
 
-.about-hero,
-.services-hero,
-.contact-hero {
+.services-hero {
   background: linear-gradient(
     135deg,
     var(--secondary-blue) 0%,
@@ -208,40 +203,8 @@ footer {
   text-align: center;
 }
 
-.company-history,
-.mission-vision,
-.team,
-.services-list,
 .contact-form-section {
   margin: 2rem auto;
-}
-
-.team-members {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.team-member {
-  text-align: center;
-}
-
-.services-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: space-between;
-}
-
-.service {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  padding: 1.5rem;
-  flex: 1 1 220px;
-  min-width: 220px;
-  max-width: 260px;
-  text-align: center;
 }
 
 .contact-form-section {
@@ -258,22 +221,13 @@ footer {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-.contact-info {
-  flex: 1 1 200px;
-}
-
 @media (max-width: 900px) {
-  .services-list,
-  .team-members,
   .contact-form-section {
     flex-direction: column;
     align-items: center;
   }
 
-  .service,
-  .team-member,
-  .contact-form,
-  .contact-info {
+  .contact-form {
     width: 100%;
     max-width: 400px;
   }
@@ -1257,14 +1211,11 @@ footer {
   margin: 0.5rem 0;
 }
 
-
-
-
 /*Contact Message Form*/
 
 .contact-form-section {
   padding: 4rem 0;
-   background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%);
+  background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%);
 }
 .contact-form-main {
   display: grid;
@@ -1273,22 +1224,22 @@ footer {
   align-items: start;
 }
 
-.contact-form-map{
+.contact-form-map {
   background-color: #ffffff;
   border-radius: 20px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
-.contact-form-map h1{
+.contact-form-map h1 {
   color: #1a237e;
   font-size: 2.5rem;
   margin-bottom: 2rem;
   text-align: center;
 }
 
-.contact-form-map iframe{
- border-radius: 10px;
- box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+.contact-form-map iframe {
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .contact-form {
@@ -1385,8 +1336,6 @@ footer {
   margin-top: 1rem;
 }
 
-
-
 /*
 
  
@@ -1398,35 +1347,6 @@ footer {
 
 
 */
-
-/* Mission/Vision/Values */
-.icon-circle.mission,
-.mission-card h3 {
-  background: linear-gradient(
-    135deg,
-    var(--primary-blue),
-    var(--secondary-blue)
-  );
-  color: var(--primary-blue);
-}
-.icon-circle.vision,
-.vision-card h3 {
-  background: linear-gradient(
-    135deg,
-    var(--primary-green),
-    var(--secondary-green)
-  );
-  color: var(--primary-green);
-}
-.icon-circle.values,
-.values-card h3 {
-  background: linear-gradient(
-    135deg,
-    var(--primary-green),
-    var(--secondary-green)
-  );
-  color: var(--primary-green);
-}
 
 /*About Page*/
 /* .container-nav-container .logo{size:100px;} */
