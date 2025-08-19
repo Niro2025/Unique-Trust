@@ -73,6 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label>Email:<br><input type="email" name="email" required></label><br>
         <label>Password:<br><input type="password" name="password" required></label><br>
         <label>Confirm Password:<br><input type="password" name="confirm_password" required></label><br>
+        <label>User Level:<br><input type="text" name="user_level" required></label><br>
+        
         <button type="submit">Sign Up</button>
     </form>
     <p>Already have an account? <a href="login.php">Login here</a>.</p>

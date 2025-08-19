@@ -1,17 +1,32 @@
 <?php
-// includes/db.php - Database connection
 
-$host = 'localhost';
-$db   = 'financial_db'; // Change to your database name
-$user = 'root';        // Change if not using default XAMPP user
-$pass = '';            // Change if you have a password set
+define('DBSERVER','localhost');
+define('DBUSERNAME','root');
+define('DBPASSWORD','1234');
+define('DBNAME','financial_db');
 
-// Create connection
-$conn = new mysqli($host, $user, $pass, $db);
+$db = mysqli_connect(DBSERVER, DBUSERNAME, DBPASSWORD, DBNAME, 3307);
 
-// Check connection
-if ($conn->connect_error) {
-    die('Connection failed: ' . $conn->connect_error);
+if ($db === false) {
+    die("Error: connection error. " .mysqli_connect_error());
 }
-// Usage: include this file and use $conn for queries
-?> 
+
+
+
+// $host = 'localhost';
+// $db   = 'financial_db'; 
+// $user = 'root';        
+// $pass = '1234';       
+
+
+
+// // Create connection
+// $conn = new mysqli($host, $user, $pass,$db,3307);
+
+// // Check connection
+// if ($conn->connect_error) {
+//     die('Connection failed: ' . $conn->connect_error);
+// }
+
+
+?>
