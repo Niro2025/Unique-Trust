@@ -1,0 +1,19 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+
+    background-color: #0f8bff;
+    font-size: 20px;
+    color: white;
+    padding: 5px 20px;
+    border-radius: 10px;
+    border: none;
+}
