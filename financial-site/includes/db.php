@@ -2,11 +2,11 @@
 
 define('DBSERVER','localhost');
 define('DBUSERNAME','root');
-define('DBPASSWORD','1234');
+define('DBPASSWORD','');
 define('DBNAME','financial_db');
 
 $db = mysqli_connect(DBSERVER, DBUSERNAME, DBPASSWORD, DBNAME, 3307);
-
+echo "connection";
 if ($db === false) {
     die("Error: connection error. " .mysqli_connect_error());
 }
