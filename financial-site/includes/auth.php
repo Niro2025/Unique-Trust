@@ -10,13 +10,13 @@ function is_admin() {
     return isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
 }
 
-function get_current_user() {
-    return [
-        'id' => $_SESSION['user_id'] ?? null,
-        'username' => $_SESSION['username'] ?? null,
-        'role' => $_SESSION['role'] ?? null
-    ];
-}
+// function get_current_user() {
+//     return [
+//         'id' => $_SESSION['id'] ?? null,
+//         'username' => $_SESSION['username'] ?? null,
+//         'role' => $_SESSION['user_level'] ?? null
+//     ];
+// }
 
 function logout() {
     session_unset();

@@ -5,8 +5,7 @@ define('DBUSERNAME','root');
 define('DBPASSWORD','');
 define('DBNAME','financial_db');
 
-$db = mysqli_connect(DBSERVER, DBUSERNAME, DBPASSWORD, DBNAME, 3307);
-echo "connection";
+$db = mysqli_connect(DBSERVER, DBUSERNAME, DBPASSWORD, DBNAME);
 if ($db === false) {
     die("Error: connection error. " .mysqli_connect_error());
 }

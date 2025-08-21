@@ -395,10 +395,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
                         </div>
                         <div class="contactus-business" style="margin-top:3rem;padding:2rem;background:linear-gradient(135deg, #e3f2fd, #f3e5f5);border-radius:15px;text-align:center;">
-                            <h3 style="">Business Hours</h3>
-                            <p style=""><strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM</p>
-                            <p style=""><strong>Saturday:</strong> 9:00 AM - 2:00 PM</p>
-                            <p style=""><strong>Sunday:</strong> Closed</p>
+                            <h3>Business Hours</h3>
+                            <p><strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM</p>
+                            <p><strong>Saturday:</strong> 9:00 AM - 2:00 PM</p>
+                            <p><strong>Sunday:</strong> Closed</p>
                         </div>
                     </div>
                 </div>
@@ -411,6 +411,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <section class="contact-form-section">
             <div class="container">
                 <div class="contact-form-main">
+                    
                     <!-- Contact Form -->
                     <div class="contact-form">
                         <h2>Send Us a Message</h2>

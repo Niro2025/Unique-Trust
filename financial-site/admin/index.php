@@ -2,27 +2,30 @@
 // admin/index.php - Admin Dashboard for Unique Trust Investment
 
 require_once '../includes/db.php';
-require_once '../includes/auth.php';
+// require_once '../includes/auth.php';
 
-if (!is_logged_in() || !is_admin()) {
-    header('Location: ../login.php');
-    exit;
-}
+// if (!is_logged_in() || !is_admin()) {
+//     // header('Location: ../login.php');
+//     exit;
+// }
 
-// Handle message deletion
-if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
-    $msg_id = (int)$_GET['delete'];
-    $stmt = $conn->prepare('DELETE FROM messages WHERE id = ?');
-    $stmt->bind_param('i', $msg_id);
-    $stmt->execute();
-    $stmt->close();
-    header('Location: index.php');
-    exit;
-}
+// // Handle message deletion
+// if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
+//     $msg_id = (int)$_GET['delete'];
+//     $stmt = $conn->prepare('DELETE FROM message WHERE id = ?');
+//     $stmt->bind_param('i', $msg_id);
+//     $stmt->execute();
+//     $stmt->close();
+//     // header('Location: index.php');
+//     exit;
+// }
 
-// Fetch messages
-$result = $conn->query('SELECT m.id, m.name, m.email, m.message, m.created_at, u.username FROM messages m LEFT JOIN users u ON m.user_id = u.id ORDER BY m.created_at DESC');
+// // Fetch messages
+// $result = $conn->query('SELECT m.id, m.name, m.email, m.message, m.created_at, u.username FROM messages m LEFT JOIN users u ON m.user_id = u.id ORDER BY m.created_at DESC');
+
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
