@@ -4,7 +4,7 @@ require_once 'includes/db.php';
 $error = '';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit'])) {
- 
+
   $username = trim($_POST['username']);
   $password = trim($_POST['password']);
 
@@ -18,56 +18,57 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit'])) {
   }
 
   if (empty($error)) {
-   
+
     if ($query = $db->prepare('SELECT id, password FROM signup WHERE username = ? ')) {
       $query->bind_param('s', $username);
       $query->execute();
 
       $query->store_result();
-     
-  
-      if($query -> num_rows>0){
-        $query-> bind_result($id, $password_db);
+
+
+      if ($query->num_rows > 0) {
+        $query->bind_result($id, $password_db);
         $query->fetch();
-echo $id;
-echo $password_db;
-echo $password;
+        echo $id;
+        echo $password_db;
+        echo $password;
 
-if (password_verify($password, $password_db)) {
+        if (password_verify($password, $password_db)) {
 
-  echo "Inside password";
-
-}
+          echo "Inside password";
+        }
       }
 
       // $row = $query->fetch();
       // echo $row;
 
-      
 
 
 
-//       if ($row) {
-//         if (password_verify($password, $row['password'])) {
-//           $_SESSION["userid"] = $row['id'];
-//           $_SESSION["user"] = $row;
+
+      //       if ($row) {
+      //         if (password_verify($password, $row['password'])) {
+      //           $_SESSION["userid"] = $row['id'];
+      //           $_SESSION["user"] = $row;
 
 
-// echo "Working final ";
+      // echo "Working final ";
 
-//           // header("location: index.php");
-//           // exit;
-//         } else {
-//           $error = '<p class="error" The Password or Username is not valid!></>';
-//         }
-//       } else {
-//         $error = '<p class="error" The Password or Username is not valid!></>';
-//       }
-      
+      //           // header("location: index.php");
+      //           // exit;
+      //         } else {
+      //           $error = '<p class="error" The Password or Username is not valid!></>';
+      //         }
+      //       } else {
+      //         $error = '<p class="error" The Password or Username is not valid!></>';
+      //       }
+
     }
     $query->close();
   }
 
+
+   
   mysqli_close($db);
 }
 
@@ -75,13 +76,21 @@ if (password_verify($password, $password_db)) {
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Login</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    </head>
-    <body>
-        <div class="container">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> -->
+
+  <!-- new form css -->
+
+  <link rel="stylesheet" href="assets/css/login.css">
+
+
+</head>
+
+<body>
+  <!-- <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <h2>Login</h2>
@@ -103,49 +112,43 @@ if (password_verify($password, $password_db)) {
                     </form>
                 </div>
             </div>
-        </div>    
-    </body>
-</html>
+        </div>  
+         -->
+  <!-- New form -->
 
 
-<!-- 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="assets/css/login.css">
-  <title>Sign Up</title>
-</head>
-
-<body>
-
-  <div id="wrapper">
-    <div class="main-content">
-      <div class="header">
-        <img src="assets/img/logo.png" />
-      </div>
-      <form action="" method="post" >
-        <div class="l-part">
-          <input type="text" placeholder="Username" class="input-1" />
-          <div class="overlap-text">
-            <input type="password" placeholder="Password" class="input-2" />
-            <a href="#">Forgot?</a>
-          </div>
-          <input type="button" name="submit" value="Log in" class="btn" />
-
-          
-
-        </div>
+  <div class="container">
+    <div class="form-box" id="login-form">
+      <form action="login_register.php" method="post">
+        <h2>Login</h2>
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit" name="login">Login</button>
+        <p>Register an account <a href="#" onclick="showForm('register-form')" >Register</a></p>
       </form>
     </div>
-    <div class="sub-content">
-      <div class="s-part">
-        Don't have an account?<a href="#"> Sign up</a>
-      </div>
+  </div>
+
+  <div class="container">
+    <div class="form-box active" id="register-form">
+      <form action="login_register.php" method="post">
+        <h2>Register</h2>
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <select name="role" id="">
+          <option value="">- Select Role -</option>
+          <option value="employee">Employee</option>
+          <option value="executive">Executive</option>
+          <option value="admin">Admin</option>
+        </select>
+        <button type="submit" name="register">Register</button>
+        <p>Already have an account <a href="#" onclick="showForm('login-form')">Login</a></p>
+      </form>
     </div>
   </div>
+
+  <script src="assets/js/login.js"></script>
 </body>
 
-</html> -->
+</html>
