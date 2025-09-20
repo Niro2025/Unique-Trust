@@ -110,3 +110,37 @@ echo"d";
    
   mysqli_close($db);
 }
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+<link rel="stylesheet" href="assets/css/login.css">
+
+</head>
+<body>
+    <div class="container">
+    <div class="form-box active" id="register-form">
+      <form action="register.php" method="post">
+      <a class="a-home" href="index.php">Home</a>  
+      <h2>Register</h2>
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <select name="role" id="">
+          <option value="">- Select Role -</option>
+          <option value="employee">Employee</option>
+          <option value="executive">Executive</option>
+          <option value="admin">Admin</option>
+        </select>
+        <button type="submit" name="register">Register</button>
+        <p>Already have an account <a href="login.php">Login</a></p>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

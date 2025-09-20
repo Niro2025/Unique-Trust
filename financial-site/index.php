@@ -9,7 +9,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name    = trim($_POST['name'] ?? '');
     $email   = trim($_POST['email'] ?? '');
     $message = trim($_POST['message'] ?? '');
-    $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+    $role = trim($_POST['role'] ?? '');
+    $date = date('Y-m-d H:i:s');
+    $reply_message = '';
+    $handler = '';
+    $reply_date = date('Y-m-d H:i:s');
 
     if (empty($name) || empty($email) || empty($message)) {
         $errors[] = 'All fields are required.';
@@ -18,14 +22,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($errors)) {
-        $stmt = $conn->prepare('INSERT INTO messages (user_id, name, email, message) VALUES (?, ?, ?, ?)');
-        $stmt->bind_param('isss', $user_id, $name, $email, $message);
-        if ($stmt->execute()) {
+        $query = $db->prepare('INSERT INTO messages (customer_name, email, message, date, category,reply_message,handler,reply_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
+        $query->bind_param('ssssssss', $name, $email, $message, $date, $role, $reply_message, $handler, $reply_date);
+        
+
+        if ($query->execute()) {
             $success = 'Thank you for contacting us! We will get back to you soon.';
         } else {
             $errors[] = 'Failed to send your message. Please try again.';
         }
-        $stmt->close();
+        $query->close();
     }
 }
 ?>
@@ -43,7 +49,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Unique Trust Investment - Home</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
+
 </head>
 
 <body>
@@ -58,9 +66,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <li><a href="index.php">Home</a></li>
                     <li><a href="about.php">About</a></li>
                     <li><a href="services.php">Services</a></li>
-                    <li><a href="contact.php">Contact</a></li>
+                    <li><a href="#contacts">Contact</a></li>
                     <li><a href="login.php">Login</a></li>
-                    <li><a href="signup.php">Sign Up</a></li>
+                    <li><a href="register.php">Sign Up</a></li>
                 </ul>
                 <div class="hamburger" id="hamburger-menu">
                     <span></span><span></span><span></span>
@@ -76,6 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p>Your trusted partner for Leasing, Divimaga, Peramaga, and Speed financial solutions. We provide fast, secure, and reliable loans tailored to your needs.</p>
                 <a href="contact.php" class="cta-btn">Contact Us</a>
             </div>
+            <button class="scroll-to-top" id="btn-scroll" onclick="scrollToTop()"><i class="fa-solid fa-arrow-up"></i></button>
         </section>
 
         <!-- About Section -->
@@ -354,7 +363,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </section>
 
         <!-- Enhanced Contact Hero Section -->
-        <section class="contactus-hero">
+        <section id="contacts" class="contactus-hero">
             <div class="contactus-section">
             </div>
             <div class="contactus-container">
@@ -411,7 +420,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <section class="contact-form-section">
             <div class="container">
                 <div class="contact-form-main">
-                    
+
                     <!-- Contact Form -->
                     <div class="contact-form">
                         <h2>Send Us a Message</h2>
@@ -453,14 +462,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     placeholder="Tell us about your financial needs or any questions you have"><?php echo htmlspecialchars($_POST['message'] ?? '') ?></textarea>
                             </div>
 
+                            <div class="contact-form-category">
+                                <select name="role" id="">
+                                    <option value="">- Select Category -</option>
+                                    <option value="leasing">Leasing</option>
+                                    <option value="divimaga">Divimaga</option>
+                                    <option value="peramaga">Peramaga</option>
+                                    <option value="sewana">Sewena</option>
+                                </select>
+                            </div>
+
                             <button class="contact-form-button" type="submit">
                                 Send Message
                             </button>
                         </form>
                     </div>
                     <div class="contact-form-map" id="googleMap">
-                            <h1>Location</h1>
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d699.663363369387!2d79.90947112474417!3d7.252941149484347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2slk!4v1753366501545!5m2!1sen!2slk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <h1>Location</h1>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d699.663363369387!2d79.90947112474417!3d7.252941149484347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2slk!4v1753366501545!5m2!1sen!2slk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                     </div>
 
@@ -579,8 +598,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
         }
     </script>
+    <script>
+        function showForm(formId) {
+            console.log("showForm function called with formId:", formId);
+            document.querySelectorAll(".form-box").forEach(form => form.classList.remove("active"));
+            document.getElementById(formId).classList.add("active");
+        }
+    </script>
+
 
     <script src="assets/js/main.js"></script>
+
 </body>
 
 </html>
