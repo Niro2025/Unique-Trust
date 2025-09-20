@@ -1,40 +1,42 @@
 <?php
 require_once 'includes/db.php';
 
-    if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['login'])) {
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['login'])) {
 
   $username = trim($_POST['username']);
   $password = trim($_POST['password']);
 
 
-    if ($query = $db->prepare('SELECT id, password FROM signup WHERE username = ? ')) {
-      $query->bind_param('s', $username);
-      $query->execute();
-      $query->store_result();
+  if ($query = $db->prepare('SELECT id, password FROM signup WHERE username = ? ')) {
+    $query->bind_param('s', $username);
+    $query->execute();
+    $query->store_result();
 
 
-      if ($query->num_rows > 0) {
-        $query->bind_result($id, $password_db);
-        $query->fetch();
-        echo $id;
-        echo $password_db;
-        echo $password;
-        
+    if ($query->num_rows > 0) {
+      $query->bind_result($id, $password_db);
+      $query->fetch();
+
+     $verify = password_verify($password, $password_db);
+
+      echo $verify;
+      echo $id; echo $verify;
+      echo $password_db;
+      echo $password;
+
+
+
+      if (password_verify($password, $password_db)) {
         header("Location: dashboard.php");
-          exit();
-
-        if (password_verify($password, $password_db)) {
-
-          echo "Inside password";
-        }
-      } else {
-        // sessions 28.47
+        exit();
       }
-
+    } else {
+      // sessions 28.47
     }
-    $query->close();
+  }
+  $query->close();
 
-   
+
   mysqli_close($db);
 }
 
@@ -54,11 +56,11 @@ require_once 'includes/db.php';
 </head>
 
 <body>
-  
+
   <div class="container">
     <div class="form-box active" id="login-form">
       <form action="login.php" method="post">
-      <a class="a-home" href="index.php">Home</a>  
+        <a class="a-home" href="index.php">Home</a>
         <h2>Login</h2>
         <input type="text" name="username" placeholder="Username" required>
         <input type="password" name="password" placeholder="Password" required>
@@ -68,7 +70,7 @@ require_once 'includes/db.php';
     </div>
   </div>
 
- 
+
 </body>
 
 </html>
