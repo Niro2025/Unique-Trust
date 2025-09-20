@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
-
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -471,7 +471,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <option value="sewana">Sewena</option>
                                 </select>
                             </div>
-
+                                <div class="g-recaptcha" data-sitekey="6LfAPM8rAAAAACYJ55z-ADquJVr9nRW8QvY5zGal"></div>
                             <button class="contact-form-button" type="submit">
                                 Send Message
                             </button>
