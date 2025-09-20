@@ -19,6 +19,9 @@ require_once 'includes/db.php';
         echo $id;
         echo $password_db;
         echo $password;
+        
+        header("Location: dashboard.php");
+          exit();
 
         if (password_verify($password, $password_db)) {
 
