@@ -4,6 +4,7 @@ require_once 'includes/session.php';
 
 $errors  = [];
 $success = '';
+date_default_timezone_set('Asia/Colombo');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name    = trim($_POST['name'] ?? '');
@@ -15,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $handler = '';
     $reply_date = date('Y-m-d H:i:s');
 
-    if (empty($name) || empty($email) || empty($message)) {
+    if (empty($name) || empty($email) || empty($message) || empty($role)) {
         $errors[] = 'All fields are required.';
     } elseif (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors[] = 'Invalid email address.';
@@ -24,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($errors)) {
         $query = $db->prepare('INSERT INTO messages (customer_name, email, message, date, category,reply_message,handler,reply_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
         $query->bind_param('ssssssss', $name, $email, $message, $date, $role, $reply_message, $handler, $reply_date);
-        
+
 
         if ($query->execute()) {
             $success = 'Thank you for contacting us! We will get back to you soon.';
@@ -64,9 +65,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <nav>
                 <ul class="nav-links">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="about.php">About</a></li>
-                    <li><a href="services.php">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
                     <li><a href="#contacts">Contact</a></li>
+                    <li><a href="faq.php">FAQ</a></li>
+                    <li><a href="policy.php">Privacy Policy</a></li>
                     <li><a href="login.php">Login</a></li>
                     <li><a href="register.php">Sign Up</a></li>
                 </ul>
@@ -77,18 +80,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </header>
     <main>
-        <section class="hero">
+        <section id="home" class="hero">
             <div class="container">
 
                 <h1>Welcome to Unique Trust Investment</h1>
                 <p>Your trusted partner for Leasing, Divimaga, Peramaga, and Speed financial solutions. We provide fast, secure, and reliable loans tailored to your needs.</p>
-                <a href="contact.php" class="cta-btn">Contact Us</a>
+                <a href="index.php#contact-form" class="cta-btn">Contact Us</a>
             </div>
             <button class="scroll-to-top" id="btn-scroll" onclick="scrollToTop()"><i class="fa-solid fa-arrow-up"></i></button>
         </section>
 
         <!-- About Section -->
-        <section class="about-section">
+        <section id="about" class="about-section">
             <div class="container">
                 <div class="about-header">
                     <h2>About Unique Trust Investment</h2>
@@ -129,13 +132,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="container">
 
                 <!-- Company History -->
-                <div class="stats-company-info">
+                <div id="history" class="stats-company-info">
                     <h2>Our Journey</h2>
                     <p>Unique Trust Investment has been serving clients with reliable financial solutions for over a decade, specializing in loans, leasing, and innovative products like Divimaga and Peramaga.</p>
                 </div>
 
                 <!-- Mission, Vision, Values -->
-                <div class="stats-company-missionvisionvalues">
+                <div id="mission-vision" class="stats-company-missionvisionvalues">
                     <div class="stats-company-mission-item">
                         <div class="stats-company-mission-item-icon">
                             <div class="stats-company-mission-item-icon-circle">
@@ -173,7 +176,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
 
                 <!-- Team Section -->
-                <div class="team-section">
+                <div id="team" class="team-section">
                     <h2>Meet Our Team</h2>
                     <div class="team-container">
                         <div class="team-member1">
@@ -194,7 +197,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </section>
 
         <!--Services Hero Section -->
-        <section class="services-hero">
+        <section id="services" class="services-hero">
             <div class="services-hero-main" style="position:absolute;top:0;left:0;right:0;bottom:0;">
             </div>
 
@@ -363,10 +366,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </section>
 
         <!-- Enhanced Contact Hero Section -->
-        <section id="contacts" class="contactus-hero">
+        <section class="contactus-hero">
             <div class="contactus-section">
             </div>
-            <div class="contactus-container">
+            <div id="contacts" class="contactus-container">
                 <div class="contactus-heading">
                     <div class="contactus-background">
                         <div class="contactus-header">
@@ -417,7 +420,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
         <!-- Contact Message Form Section -->
-        <section class="contact-form-section">
+        <section id="contact-form" class="contact-form-section">
             <div class="container">
                 <div class="contact-form-main">
 
@@ -436,7 +439,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         <?php if ($success): ?>
                             <div class="contact-form-success">
-                                <p style="margin:0;"><?php echo $success ?></p>
+                                <p style="margin:0;"><?php echo $success; ?></p>
                             </div>
                         <?php endif; ?>
 
@@ -471,7 +474,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <option value="sewana">Sewena</option>
                                 </select>
                             </div>
-                                <div class="g-recaptcha" data-sitekey="6LfAPM8rAAAAACYJ55z-ADquJVr9nRW8QvY5zGal"></div>
+                            <div class="g-recaptcha" data-sitekey="6LfAPM8rAAAAACYJ55z-ADquJVr9nRW8QvY5zGal"></div>
                             <button class="contact-form-button" type="submit">
                                 Send Message
                             </button>
@@ -482,49 +485,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d699.663363369387!2d79.90947112474417!3d7.252941149484347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2slk!4v1753366501545!5m2!1sen!2slk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                     </div>
-
-                    <!-- Contact Information -->
-                    <!--                    <div style="background:#fff;padding:3rem;border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,0.1);">
-                        <h2 style="color:#1a237e;font-size:2rem;margin-bottom:2rem;text-align:center;">Get In Touch</h2>
-
-                        <div style="display:flex;flex-direction:column;gap:2rem;">
-                            <div class="info-block email">
-                                <div class="info-icon email">
-                                    <i class="fa-regular fa-comments fa-2x" style="color:#1976d2;"></i>
-                                </div>
-                                <div>
-                                    <h3>Email Us</h3>
-                                    <p>info@uniquetrustinvestment.com</p>
-                                </div>
-                            </div>
-                            <div class="info-block phone">
-                                <div class="info-icon phone">
-                                    <i class="fa-solid fa-headset fa-2x" style="color:#1976d2;"></i>
-                                </div>
-                                <div>
-                                    <h3>Call Us</h3>
-                                    <p>+94 11 234 5678</p>
-                                </div>
-                            </div>
-                            <div class="info-block address">
-                                <div class="info-icon address">
-                                    <i class="fa-regular fa-map fa-2x" style="color:#1976d2;"></i>
-                                </div>
-                                <div>
-                                    <h3>Visit Us</h3>
-                                    <p>123 Main Street, Colombo, Sri Lanka</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div style="margin-top:3rem;padding:2rem;background:linear-gradient(135deg, #e3f2fd, #f3e5f5);border-radius:15px;text-align:center;">
-                            <h3 style="color:#1a237e;margin-bottom:1rem;">Business Hours</h3>
-                            <p style="color:#555;margin:0.5rem 0;"><strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM</p>
-                            <p style="color:#555;margin:0.5rem 0;"><strong>Saturday:</strong> 9:00 AM - 2:00 PM</p>
-                            <p style="color:#555;margin:0.5rem 0;"><strong>Sunday:</strong> Closed</p>
-                        </div>
-                    </div>
-                        -->
 
                 </div>
             </div>
@@ -549,31 +509,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="index.php">Home</a></li>
-                        <li><a href="about.php">About Us</a></li>
-                        <li><a href="services.php">Services</a></li>
-                        <li><a href="contact.php">Contact</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>About Us</h4>
                     <ul>
-                        <li><a href="#">Our History</a></li>
-                        <li><a href="#">Mission & Vision</a></li>
-                        <li><a href="#">Team</a></li>
+                        <li><a href="#history">Our History</a></li>
+                        <li><a href="#mission-vision">Mission & Vision</a></li>
+                        <li><a href="#team">Team</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Support</h4>
                     <ul>
                         <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Help Center</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Contact</h4>
                     <ul>
-                        <li>123 Main Street, Colombo, Sri Lanka</li>
+                        <li>123 Main Street, Katana, Sri Lanka</li>
                         <li>info@uniquetrustinvestment.com</li>
                         <li>+94 11 234 5678</li>
                     </ul>

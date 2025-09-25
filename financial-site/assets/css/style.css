@@ -1361,9 +1361,9 @@ footer {
 select {
   width: 100%;
   padding: 12px;
-  background: #fff9f9;
+  background: #fff;
   border-radius: 6px;
-  border: none;
+  border: 2px solid #e0e0e0;
   outline: none;
   font-size: 16px;
   color: #1a237e;

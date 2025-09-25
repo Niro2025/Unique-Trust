@@ -17,21 +17,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['login'])) {
       $query->bind_result($id, $password_db);
       $query->fetch();
 
-     $verify = password_verify($password, $password_db);
-
-      echo $verify;
-      echo $id; echo $verify;
+      echo $id; 
       echo $password_db;
       echo $password;
 
-
-
-      if (password_verify($password, $password_db)) {
+      if ($password === $password_db) {
         header("Location: dashboard.php");
         exit();
+      } else {
+        $login_error = 'Incorrect username or password!';
       }
     } else {
-      // sessions 28.47
+      $login_error = 'Incorrect username or password!';
     }
   }
   $query->close();
@@ -62,8 +59,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['login'])) {
       <form action="login.php" method="post">
         <a class="a-home" href="index.php">Home</a>
         <h2>Login</h2>
+         <?php if (!empty($login_error)): ?>
+          <div class="error-message" >
+            <?php echo $login_error; ?>
+          </div>
+        <?php endif; ?>
         <input type="text" name="username" placeholder="Username" required>
         <input type="password" name="password" placeholder="Password" required>
+
         <button type="submit" name="login">Login</button>
         <p>Register an account <a href="register.php">Register</a></p>
       </form>

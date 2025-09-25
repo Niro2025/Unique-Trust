@@ -24,55 +24,61 @@
             <li><a href="#">Reports</a></li>
         </ul>
     </div>
-    
+
     <div class="main">
         <button id="downloadexcel">Download Excel</button>
         <button id="downloadpdf">Download PDF</button>
         <div class="user-message">
+           
             <div class="cards">
                 <div class="card">
-<table class="table">
-    <thead>
-        <tr>
-            <th>Message ID</th>
-            <th>Customer Name</th>
-            <th>Email</th>
-            <th>Message</th>
-            <th>Date and Time</th>
-            <th>Category</th>
-            <th>Action</th>
-            <th>Reply Message</th>
-            <th>Replier</th>
-            <th>Reply Date and Time</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        require_once 'includes/db.php';
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Message ID</th>
+                                <th>Customer Name</th>
+                                <th>Email</th>
+                                <th>Message</th>
+                                <th>Date and Time</th>
+                                <th>Category</th>
+                                <th>Action</th>
+                                <th>Reply Message</th>
+                                <th>Replier</th>
+                                <th>Reply Date and Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            require_once 'includes/db.php';
 
 
-        $query = $db ->prepare("SELECT * FROM messages");
-        $query->execute();
+                            $query = $db->prepare("SELECT * FROM messages");
+                            $query->execute();
 
-        $result = $query->get_result();
+                            $result = $query->get_result();
 
-        while ($row = $result->fetch_assoc()) {
-            echo "<tr>";
-            echo "<td>" . $row['message_id'] . "</td>";
-            echo "<td>" . $row['customer_name'] . "</td>";
-            echo "<td>" . $row['email'] . "</td>";
-            echo "<td>" . $row['message'] . "</td>";
-            echo "<td>" . $row['date'] . "</td>";
-            echo "<td>" . $row['category'] . "</td>";
-            echo "<td><button class='btn btn-primary'>Reply</button></td>";
-            echo "<td>" . $row['reply_message'] . "</td>";
-            echo "<td>" . $row['handler'] . "</td>";
-            echo "<td>" . $row['reply_date'] . "</td>";
-            echo "</tr>";
-        }
-        ?>
-    </tbody>
-</table>
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td>" . $row['message_id'] . "</td>";
+                                echo "<td>" . $row['customer_name'] . "</td>";
+                                echo "<td>" . $row['email'] . "</td>";
+                                echo "<td>" . $row['message'] . "</td>";
+                                echo "<td>" . $row['date'] . "</td>";
+                                echo "<td>" . $row['category'] . "</td>";
+                                echo "<td><a class='btn btn-primary' href='reply.php?message_id=" . $row['message_id'] . "'>Reply</a></td>";
+                                echo "<td>" . $row['reply_message'] . "</td>";
+                                echo "<td>" . $row['handler'] . "</td>";
+                                echo "<td>" . $row['reply_date'] . "</td>";
+                                echo "</tr>";
+                            }
+
+                   
+
+
+                            
+                            ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -90,11 +96,22 @@
     });
 
     document.getElementById('downloadpdf').addEventListener('click', function() {
-        const { jsPDF } = window.jspdf;
+        const {
+            jsPDF
+        } = window.jspdf;
         var doc = new jsPDF();
-        doc.autoTable({ html: 'table' });
+        doc.autoTable({
+            html: 'table'
+        });
         doc.save('Messages.pdf');
-    }); </script>
+    });
+
+
+    function openReply() {
+       
+    }
+
+</script>
 
 
 </html>
