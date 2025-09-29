@@ -19,9 +19,7 @@
     <div class="sidebar">
         <ul>
             <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Clients</a></li>
-            <li><a href="#">Messages</a></li>
-            <li><a href="#">Reports</a></li>
+            <li><a href="users.php">Users</a></li>
         </ul>
     </div>
 

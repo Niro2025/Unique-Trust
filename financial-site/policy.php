@@ -25,7 +25,7 @@
                     <li><a href="faq.php">FAQ</a></li>
                     <li><a href="policy.php">Privacy Policy</a></li>
                     <li><a href="login.php">Login</a></li>
-                    <li><a href="register.php">Sign Up</a></li>
+                    <!-- <li><a href="register.php">Sign Up</a></li> -->
                 </ul>
             </nav>
         </div>

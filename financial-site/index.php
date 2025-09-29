@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <li><a href="faq.php">FAQ</a></li>
                     <li><a href="policy.php">Privacy Policy</a></li>
                     <li><a href="login.php">Login</a></li>
-                    <li><a href="register.php">Sign Up</a></li>
+                    <!-- <li><a href="register.php">Sign Up</a></li> -->
                 </ul>
                 <div class="hamburger" id="hamburger-menu">
                     <span></span><span></span><span></span>
@@ -525,8 +525,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="footer-col">
                     <h4>Support</h4>
                     <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="faq.php">FAQ</a></li>
+                        <li><a href="policy.php">Privacy Policy</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">

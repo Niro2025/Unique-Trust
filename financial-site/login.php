@@ -22,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['login'])) {
       echo $password;
 
       if ($password === $password_db) {
+        
         header("Location: dashboard.php");
         exit();
       } else {
