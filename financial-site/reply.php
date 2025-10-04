@@ -62,10 +62,8 @@
                         </div>
                         
                         <button type="submit" class="btn btn-primary">Send</button>
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                        <button type="submit" class="btn btn-primary">Update</button>
-                        <button type="submit" class="btn btn-primary">Add</button>
-                        <button type="submit" class="btn btn-primary">Rename</button>
+                        <button type="button" class="btn btn-danger" onclick="window.history.back();">Close</button>
+                        
                         
                     </form>
                 </div>

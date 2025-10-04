@@ -1,153 +1,334 @@
 <?php
+
+
 require_once 'includes/db.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim($_POST['username'] ?? '');
-    $email = trim($_POST['email'] ?? '');
-    $password = trim($_POST['password'] ?? '');
-    $role = trim($_POST['role'] ?? '');
+// Add User
 
-    if ($username && $email && $password && $role) {
-        $stmt = $db->prepare("INSERT INTO signup (username, email, password, user_level) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param('ssss', $username, $email, $password, $role);
-        $stmt->execute();
-        $stmt->close();
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['useradd'])) {
+
+  // Registation Form Validation
+
+  if (! isset($_POST['username'], $_POST['password'], $_POST['email'])) {
+
+    $register_error = 'Please complete the registation form!';
+  } else if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email'])) {
+
+    $register_error = 'Please complete the registation form!';
+  }
+
+  // Registation feilds Validation
+
+  else if (! filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    $register_error = 'Email is not valid';
+  } else if (preg_match('/^[a-zA-Z0-9]+$/', $_POST['username']) == 0) {
+    $register_error = 'Username is not valid';
+  } else if (strlen($_POST['password']) < 4) {
+    $register_error = 'Password must be long, at least 4 Characters';
+  } else if (empty($_POST['role'])) {
+    $register_error = 'Role must be selected';
+  } else {
+    // Check username exists
+
+    if ($query = $db->prepare('SELECT username FROM signup WHERE username = ?')) {
+
+      $query->bind_param('s', $_POST['username']);
+      $query->execute();
+      $query->store_result();
+
+      if ($query->num_rows > 0) {
+        $register_error = 'Username exists, please choose another!';
+      } else {
+
+        $password   = $_POST['password'];
+        $username   = $_POST['username'];
+        $email      = $_POST['email'];
+        $role       = $_POST['role'];
+
+
+
+        if ($query = $db->prepare('INSERT INTO signup (username, email, password, user_level) VALUES (?, ?, ?, ?)')) {
+          $query->bind_param('ssss', $username, $email, $password, $role);
+          $query->execute();
+
+          $success_message = "Registration Successful";
+          // header("Location: login.php");
+        } else {
+          $register_error = "Error in entering data";
+        }
+      }
+      $query->close();
+    } else {
+
+      $register_error = "Error in entering data"; // Prob with entering feild datas
     }
+  }
 }
-// header('Location:users.php');
-exit();
+
+
+// Update Users
+
+
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['userupdate'])) {
+  if (isset($_POST['user-id'], $_POST['username'], $_POST['email'], $_POST['password'], $_POST['role'])) {
+
+    if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email'])) {
+
+    $register_error = 'Please complete the registation form!';
+  }
+  else if (! filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    $register_error = 'Email is not valid';
+  } else if (preg_match('/^[a-zA-Z0-9]+$/', $_POST['username']) == 0) {
+    $register_error = 'Username is not valid';
+  } else if (strlen($_POST['password']) < 4) {
+    $register_error = 'Password must be long, at least 4 Characters';
+  } else if (empty($_POST['role'])) {
+    $register_error = 'Role must be selected';
+  } else{
+    
+
+    echo $_POST['user-id'] . " - " . $_POST['username'] . " - " . $_POST['email'] . " - " . $_POST['password'] . " - " . $_POST['role'];
+
+    $userid = $_POST['user-id'];
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $role = $_POST['role'];
+
+    if ($query = $db->prepare("UPDATE signup SET username = ?, email = ?, password = ?, user_level = ? WHERE id = ?")) {
+      $query->bind_param('ssssi', $username, $email, $password, $role, $userid);
+      $query->execute();
+
+      if ($query->affected_rows > 0) {
+        $success_message = "User updated successfully.";
+      } else {
+        $register_error = "No changes made or user not found.";
+      }
+      $query->close();
+    } else {
+      $register_error = "Error in updating data.";
+    }
+  }  } else {
+    $register_error = "All fields are required for update.";
+   
+  }
+}
+
+// Delete Users
+
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['userdelete'])) {
+  if (isset($_POST['user-id'])) {
+    $userid = $_POST['user-id'];
+
+    if ($query = $db->prepare("DELETE FROM signup WHERE id = ?")) {
+      $query->bind_param('i', $userid);
+      $query->execute();
+
+      if ($query->affected_rows > 0) {
+        $success_message = "User deleted successfully.";
+      } else {
+        $register_error = "User not found.";
+      }
+      $query->close();
+    } else {
+      $register_error = "Error in deleting data.";
+    }
+  } else {
+    $register_error = "User ID is required for deletion.";
+  }
+}
+
+
+
 ?>
+
+
 
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/dbstyle.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/dbstyle.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/@linways/table-to-excel@1.0.4/dist/tableToExcel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/3.0.3/jspdf.umd.min.js" integrity="sha512-+EeCylkt9WHJk5tGJxYdecHOcXFRME7qnbsfeMsdQL6NUPYm2+uGFmyleEqsmVoap/f3dN/sc3BX9t9kHXkHHg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.2/jspdf.plugin.autotable.min.js" integrity="sha512-JizZOUNesiGhMcp9fsA/9W31FOat6QysBM8hSj6ir8iIANIUJ2mhko7Lo1+j0ErftmJ8SebMZLm9iielKjeIEQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@linways/table-to-excel@1.0.4/dist/tableToExcel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/3.0.3/jspdf.umd.min.js" integrity="sha512-+EeCylkt9WHJk5tGJxYdecHOcXFRME7qnbsfeMsdQL6NUPYm2+uGFmyleEqsmVoap/f3dN/sc3BX9t9kHXkHHg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.2/jspdf.plugin.autotable.min.js" integrity="sha512-JizZOUNesiGhMcp9fsA/9W31FOat6QysBM8hSj6ir8iIANIUJ2mhko7Lo1+j0ErftmJ8SebMZLm9iielKjeIEQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <title>Users</title>
+  <title>Users</title>
 </head>
 
 <body>
-    <div class="header">
-        <h1>Users</h1>
-        <a href="index.php" class="btn btn-primary">Home</a>
+  <div class="header">
+      <h1>User Management</h1>
+    <div class="sidebar">
+        <ul>
+            <li><a href="dashboard.php">Dashboard</a></li>
+            <li><a href="index.php" >Home</a></li>
+        </ul>
     </div>
-    <div class="user-message">
-
-        <div class="cards">
-            <div class="card">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>User ID</th>
-                            <th>User Name</th>
-                            <th>Email</th>
-                            <th>Password</th>
-                            <th>User Role</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        require_once 'includes/db.php';
+  
+   
 
 
-                        $query = $db->prepare("SELECT * FROM signup");
-                        $query->execute();
+  </div>
+  <div class="container">
+    <div class="form-box active" id="user-form">
+      <form action="users.php" method="post">
 
-                        $result = $query->get_result();
+        <?php if (!empty($register_error)): ?>
+          <div class="error-message">
+            <span>Registation Fails!</span></br>
+            <?php echo $register_error; ?>
+          </div>
+        <?php endif; ?>
+        <?php if (!empty($success_message)): ?>
+          <div class="success-message">
+            <?php echo $success_message; ?>
+          </div>
+        <?php endif; ?>
 
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<tr>";
-                            echo "<td>" . $row['id'] . "</td>";
-                            echo "<td>" . $row['username'] . "</td>";
-                            echo "<td>" . $row['email'] . "</td>";
-                            echo "<td>" . $row['password'] . "</td>";
-                            echo "<td>" . $row['user_level'] . "</td>";
-                            echo "</tr>";
-                        }
-                        $query->close();
-                        $db->close();
-                        ?>
-                    </tbody>
-                </table>
-            </div>
+        <div class="fields">
+          <div class="field">
+            <label for="userid">User ID</label>
+            <input type="number" id="userid" disabled>
+            <input type="hidden" name="user-id" id="user-id">
+          </div>
+
+          <div class="field">
+            <label for="username">User Name</label>
+            <input type="text" name="username" id="username" placeholder="Username" required>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Email" required>
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <input type="text" name="password" id="password" placeholder="Password" required>
+          </div>
+
+          <div class="field">
+            <label for="role">User Role</label>
+            <select name="role" id="role">
+              <option value="">- Select Role -</option>
+              <option value="employee">Employee</option>
+              <option value="executive">Executive</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+          <div class="buttons">
+            <button class="btn btn-primary" id="add-user" name="useradd" type="submit">Add User</button>
+            <button type='submit' id="update-user" name="userupdate" class='btn btn-primary' onclick='updateUser(this)' disabled>Update</button>
+            <button type='submit' id="delete-user" name="userdelete" class='btn btn-danger' onclick='deleteUser(this)' disabled>Delete</button>
+
+          </div>
         </div>
+      </form>
     </div>
-    <div class="form-data">
-        <form action="includes/reply.php" method="POST">
-            <input type="hidden" name="message_id" id="message_id">
+  </div>
 
-            <button type="submit" class="btn btn-primary">Add</button>
-            <button type="submit" class="btn btn-primary">Update</button>
-            <button type="submit" class="btn btn-danger">Delete</button>
-            <button type="submit" class="btn btn-primary">Rename</button>
+  <div class="user-message">
 
-        </form>
-    </div>
+    <div class="cards">
+      <div class="card">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>User ID</th>
+              <th>User Name</th>
+              <th>Email</th>
+              <th>Password</th>
+              <th>User Role</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody class="table-body">
+            <?php
+            require_once 'includes/db.php';
 
-    <div class="modal" id="addUserModal" tabindex="-1" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); z-index:9999; align-items:center; justify-content:center;">
-        <div class="modal-dialog" style="max-width:400px; margin:auto;">
-            <div class="modal-content" style="padding: 1.5rem;">
-                <div class="modal-header" style="display:flex; justify-content:space-between; align-items:center;">
-                    <h5 class="modal-title">Add User</h5>
-                    <button type="button" id="closeAddUserModal" style="background:none; border:none; font-size:1.5rem;">&times;</button>
-                </div>
-                <form action="users.php" method="POST">
-                    <div class="mb-3">
-                        <label for="add_username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="add_username" name="username" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="add_email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="add_email" name="email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="add_password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="add_password" name="password" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="add_role" class="form-label">Role</label>
-                        <select class="form-control" id="add_role" name="role" required>
-                            <option value="">- Select Role -</option>
-                            <option value="employee">Employee</option>
-                            <option value="executive">Executive</option>
-                            <option value="admin">Admin</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-success">Add User</button>
-                </form>
-            </div>
-        </div>
-    </div>
 
-    <script>
-        // Show modal
-        document.getElementById('openAddUserModal').onclick = function() {
-            document.getElementById('addUserModal').style.display = 'flex';
-        };
-        // Hide modal
-        document.getElementById('closeAddUserModal').onclick = function() {
-            document.getElementById('addUserModal').style.display = 'none';
-        };
-        // Hide modal when clicking outside the modal content
-        window.onclick = function(event) {
-            var modal = document.getElementById('addUserModal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
+            $query = $db->prepare("SELECT * FROM signup");
+            $query->execute();
+
+            $result = $query->get_result();
+
+            while ($row = $result->fetch_assoc()) {
+              echo "<tr>";
+              echo "<td>" . $row['id'] . "</td>";
+              echo "<td>" . $row['username'] . "</td>";
+              echo "<td>" . $row['email'] . "</td>";
+              echo "<td>" . $row['password'] . "</td>";
+              echo "<td>" . $row['user_level'] . "</td>";
+              echo "<td><button type='submit' class='btn btn-primary' onclick='viewUser(this)'>Edit</button> </td>";
+              echo "</tr>";
             }
-        };
-    </script>
+            $query->close();
+            $db->close();
+
+            ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function viewUser(button) {
+      const row = button.closest('tr');
+      const userId = row.cells[0].innerText;
+      const username = row.cells[1].innerText;
+      const email = row.cells[2].innerText;
+      const password = row.cells[3].innerText;
+      const role = row.cells[4].innerText;
+
+      console.log(button);
+      console.log(row);
+      console.log(userId, username, email, password, role);
 
 
+
+
+      rowHighlight(row);
+      toggleButtons(true);
+
+      document.getElementById('userid').value = userId;
+      document.getElementById('user-id').value = userId;
+      document.getElementById('username').value = username;
+      document.getElementById('email').value = email;
+      document.getElementById('password').value = password;
+      document.getElementById('role').value = role;
+      scrollToTop();
+     
+    }
+
+    function rowHighlight(row) {
+     
+      const rows = document.querySelectorAll('tbody tr');
+      rows.forEach(r => r.classList.remove('highlighted-row'));
+
+     
+      row.classList.add('highlighted-row');
+    }
+
+    function toggleButtons(enable) {
+      document.getElementById('update-user').disabled = !enable;
+      document.getElementById('delete-user').disabled = !enable;
+      document.getElementById('add-user').disabled = enable;
+    }
+
+    function scrollToTop() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+  </script>
 
 </body>
 

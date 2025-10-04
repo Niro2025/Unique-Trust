@@ -18,14 +18,14 @@
 <body>
     <div class="sidebar">
         <ul>
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="users.php">Users</a></li>
+            <li><a href="index.php" >Home</a></li>
+            <li><a href="users.php" >Users</a></li>
         </ul>
     </div>
 
     <div class="main">
-        <button id="downloadexcel">Download Excel</button>
-        <button id="downloadpdf">Download PDF</button>
+        <button id="downloadexcel" class="btn btn-primary">Download Excel</button>
+        <button id="downloadpdf" class="btn btn-primary">Download PDF</button>
         <div class="user-message">
            
             <div class="cards">

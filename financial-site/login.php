@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['login'])) {
         <input type="password" name="password" placeholder="Password" required>
 
         <button type="submit" name="login">Login</button>
-        <p>Register an account <a href="register.php">Register</a></p>
+        
       </form>
     </div>
   </div>
