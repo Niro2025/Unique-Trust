@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['useradd'])) {
 
   // Registation Form Validation
 
-  if (! isset($_POST['username'], $_POST['password'], $_POST['email'])) {
+  if (!isset($_POST['username'], $_POST['password'], $_POST['email'])) {
 
     $register_error = 'Please complete the registation form!';
   } else if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email'])) {
@@ -18,8 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['useradd'])) {
   }
 
   // Registation feilds Validation
-
-  else if (! filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+  else if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     $register_error = 'Email is not valid';
   } else if (preg_match('/^[a-zA-Z0-9]+$/', $_POST['username']) == 0) {
     $register_error = 'Username is not valid';
@@ -40,10 +39,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['useradd'])) {
         $register_error = 'Username exists, please choose another!';
       } else {
 
-        $password   = $_POST['password'];
-        $username   = $_POST['username'];
-        $email      = $_POST['email'];
-        $role       = $_POST['role'];
+        $password = $_POST['password'];
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $role = $_POST['role'];
 
 
 
@@ -75,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['userupdate'])) {
     if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email'])) {
 
       $register_error = 'Please complete the registation form!';
-    } else if (! filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    } else if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
       $register_error = 'Email is not valid';
     } else if (preg_match('/^[a-zA-Z0-9]+$/', $_POST['username']) == 0) {
       $register_error = 'Username is not valid';
@@ -155,8 +154,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['userdelete'])) {
   <link rel="stylesheet" href="assets/css/users.css">
 
   <script src="https://cdn.jsdelivr.net/npm/@linways/table-to-excel@1.0.4/dist/tableToExcel.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/3.0.3/jspdf.umd.min.js" integrity="sha512-+EeCylkt9WHJk5tGJxYdecHOcXFRME7qnbsfeMsdQL6NUPYm2+uGFmyleEqsmVoap/f3dN/sc3BX9t9kHXkHHg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.2/jspdf.plugin.autotable.min.js" integrity="sha512-JizZOUNesiGhMcp9fsA/9W31FOat6QysBM8hSj6ir8iIANIUJ2mhko7Lo1+j0ErftmJ8SebMZLm9iielKjeIEQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/3.0.3/jspdf.umd.min.js"
+    integrity="sha512-+EeCylkt9WHJk5tGJxYdecHOcXFRME7qnbsfeMsdQL6NUPYm2+uGFmyleEqsmVoap/f3dN/sc3BX9t9kHXkHHg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.2/jspdf.plugin.autotable.min.js"
+    integrity="sha512-JizZOUNesiGhMcp9fsA/9W31FOat6QysBM8hSj6ir8iIANIUJ2mhko7Lo1+j0ErftmJ8SebMZLm9iielKjeIEQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <title>Users</title>
 </head>
@@ -248,27 +251,33 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['userdelete'])) {
               <option value="admin">Admin</option>
             </select>
           </div>
+         
+        </div>
+        <div class="button-container">
           <div class="buttons">
             <button class="btn btn-primary" id="add-user" name="useradd" type="submit">Add User</button>
 
           </div>
-        </div>
-        <div class="button-container">
-          <button type='submit' id="update-user" name="userupdate" class='btn btn-primary' onclick='updateUser(this)' disabled>Update</button>
-          <button type='submit' id="delete-user" name="userdelete" class='btn button' onclick='deleteUser(this)' disabled>Delete</button>
-          <button type='submit' id="close-user" name="userclose" class='btn button' onclick='toggleButtons(true)' disabled>Close</button>
+          <button type='submit' id="update-user" name="userupdate" class='btn btn-primary' onclick='updateUser(this)'
+            disabled>Update</button>
+          <button type='submit' id="delete-user" name="userdelete" class='btn button' onclick='deleteUser(this)'
+            disabled>Delete</button>
+          <button type='submit' id="close-user" name="userclose" class='btn button' onclick='toggleButtons(true)'
+            disabled>Close</button>
 
           <div>
             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
               Delete Item
             </button>
 
-            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
+              aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                   <div class="modal-header bg-danger text-white">
                     <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                      aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                     <p class="mb-0">Are you sure you want to delete this item? This action cannot be undone.</p>
