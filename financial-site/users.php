@@ -248,22 +248,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['userdelete'])) {
               <option value="admin">Admin</option>
             </select>
           </div>
+          
+        </div>
+        <div class="button-container">
           <div class="buttons">
             <button class="btn btn-primary" id="add-user" name="useradd" type="submit">Add User</button>
 
           </div>
-        </div>
-        <div class="button-container">
           <button type='submit' id="update-user" name="userupdate" class='btn btn-primary' onclick='updateUser(this)' disabled>Update</button>
           <button type='submit' id="delete-user" name="userdelete" class='btn button' onclick='deleteUser(this)' disabled>Delete</button>
           <button type='submit' id="close-user" name="userclose" class='btn button' onclick='toggleButtons(true)' disabled>Close</button>
 
           <div>
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
-              Delete Item
-            </button>
-
-            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+             <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                   <div class="modal-header bg-danger text-white">
