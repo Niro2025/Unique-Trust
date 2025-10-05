@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <header>
         <div class="container nav-container">
             <div class="logo">
-                <img src="assets/img/logo.png" alt="Unique Trust Investment Logo" style="height:100px;">
+                <img src="assets/img/logo.png" alt="Unique Trust Investment Logo">
                 <span class="company-name">Unique Trust Investment</span>
             </div>
             <nav>
@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <li><a href="faq.php">FAQ</a></li>
                     <li><a href="policy.php">Privacy Policy</a></li>
                     <li><a href="login.php">Login</a></li>
-                   
+
                 </ul>
                 <div class="hamburger" id="hamburger-menu">
                     <span></span><span></span><span></span>
@@ -221,8 +221,86 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </section>
 
         <!-- Enhanced Services List Section -->
+
+<!-- 
+
+        <section>
+            <div class="container">
+                <div class="services-carousel">
+                    <div class="carousel" aria-label="Gallery">
+
+
+
+                        <ol class="carousel__viewport">
+                            <li id="carousel__slide1"
+                                tabindex="0"
+                                class="carousel__slide">
+                                <div class="carousel__snapper">
+                                    <a href="#carousel__slide4"
+                                        class="carousel__prev">Go to last slide</a>
+                                    <a href="#carousel__slide2"
+                                        class="carousel__next">Go to next slide</a>
+                                </div>
+                            </li>
+                            <li id="carousel__slide2"
+                                tabindex="0"
+                                class="carousel__slide">
+                                <div class="carousel__snapper"></div>
+                                <a href="#carousel__slide1"
+                                    class="carousel__prev">Go to previous slide</a>
+                                <a href="#carousel__slide3"
+                                    class="carousel__next">Go to next slide</a>
+                            </li>
+                            <li id="carousel__slide3"
+                                tabindex="0"
+                                class="carousel__slide">
+                                <div class="carousel__snapper"></div>
+                                <a href="#carousel__slide2"
+                                    class="carousel__prev">Go to previous slide</a>
+                                <a href="#carousel__slide4"
+                                    class="carousel__next">Go to next slide</a>
+                            </li>
+                            <li id="carousel__slide4"
+                                tabindex="0"
+                                class="carousel__slide">
+                                <div class="carousel__snapper"></div>
+                                <a href="#carousel__slide3"
+                                    class="carousel__prev">Go to previous slide</a>
+                                <a href="#carousel__slide1"
+                                    class="carousel__next">Go to first slide</a>
+                            </li>
+                        </ol>
+                        <aside class="carousel__navigation">
+                            <ol class="carousel__navigation-list">
+                                <li class="carousel__navigation-item">
+                                    <a href="#carousel__slide1"
+                                        class="carousel__navigation-button">Go to slide 1</a>
+                                </li>
+                                <li class="carousel__navigation-item">
+                                    <a href="#carousel__slide2"
+                                        class="carousel__navigation-button">Go to slide 2</a>
+                                </li>
+                                <li class="carousel__navigation-item">
+                                    <a href="#carousel__slide3"
+                                        class="carousel__navigation-button">Go to slide 3</a>
+                                </li>
+                                <li class="carousel__navigation-item">
+                                    <a href="#carousel__slide4"
+                                        class="carousel__navigation-button">Go to slide 4</a>
+                                </li>
+                            </ol>
+                        </aside>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+ -->
+        
         <section class="service-list">
             <div class="container">
+
                 <div class="service-list-grid">
                     <div class="service-card">
                         <div class="service-card-background-leasing">
@@ -238,7 +316,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <li>Asset management support</li>
                             </ul>
                             <div class="service-card-more">
-                                <a href="contact.php">Learn More</a>
+                                <!-- <a href="contact.php">Learn More</a> -->
                             </div>
                         </div>
                     </div>
@@ -257,7 +335,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <li>Regular performance reports</li>
                             </ul>
                             <div class="service-card-more">
-                                <a href="contact.php">Learn More</a>
+                                <!-- <a href="contact.php">Learn More</a> -->
                             </div>
                         </div>
                     </div>
@@ -276,7 +354,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <li>Easy withdrawal options</li>
                             </ul>
                             <div class="service-card-more">
-                                <a href="contact.php">Learn More</a>
+                                <!-- <a href="contact.php">Learn More</a> -->
                             </div>
                         </div>
                     </div>
@@ -295,7 +373,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <li>24/7 customer support</li>
                             </ul>
                             <div class="service-card-more">
-                                <a href="contact.php">Learn More</a>
+                                <!-- <a href="contact.php">Learn More</a> -->
                             </div>
                         </div>
                     </div>
