@@ -819,7 +819,7 @@ footer {
   position: relative;
 }
 .service-card-background-leasing {
-  background: linear-gradient(135deg, #1976d2, #64b5f6);
+  background: linear-gradient(135deg, #53a2f2, #64b5f6);
   padding: 1rem;
   text-align: center;
 }
@@ -855,7 +855,7 @@ footer {
 }
 
 .service-card-leasing .service-card-more a {
-  background: linear-gradient(135deg, #1976d2, #64b5f6);
+  background: linear-gradient(135deg, #51a0ee, #64b5f6);
   color: #fff;
   padding: 0.75rem 1.5rem;
   border-radius: 25px;
@@ -872,7 +872,7 @@ footer {
 /*------------------------------------------------------*/
 
 .service-card-background-divimaga {
-  background: linear-gradient(135deg, #388e3c, #66bb6a);
+  background: linear-gradient(135deg, #53a2f2, #64b5f6);
   padding: 1rem;
   text-align: center;
 }
@@ -908,7 +908,7 @@ footer {
 }
 
 .service-card-divimaga .service-card-more a {
-  background: linear-gradient(135deg, #388e3c, #66bb6a);
+  background: linear-gradient(135deg, #53a2f2, #64b5f6);
   color: #fff;
   padding: 0.75rem 1.5rem;
   border-radius: 25px;
@@ -924,7 +924,7 @@ footer {
 /*-----------------------------------------------------------*/
 
 .service-card-background-peramaga {
-  background: linear-gradient(135deg, #f57c00, #ffb74d);
+  background: linear-gradient(135deg, #53a2f2, #64b5f6);
   padding: 1rem;
   text-align: center;
 }
@@ -960,7 +960,7 @@ footer {
 }
 
 .service-card-peramaga .service-card-more a {
-  background: linear-gradient(135deg, #f57c00, #ffb74d);
+  background: linear-gradient(135deg, #53a2f2, #64b5f6);
   color: #fff;
   padding: 0.75rem 1.5rem;
   border-radius: 25px;
@@ -976,7 +976,7 @@ footer {
 /*---------------------------------------------------*/
 
 .service-card-background-sewana {
-  background: linear-gradient(135deg, #7b1fa2, #ba68c8);
+  background: linear-gradient(135deg, #1e89f5, #64b5f6);
   padding: 1rem;
   text-align: center;
 }
@@ -1012,7 +1012,7 @@ footer {
 }
 
 .service-card-sewana .service-card-more a {
-  background: linear-gradient(135deg, #7b1fa2, #ba68c8);
+  background: linear-gradient(135deg, #1781ea, #64b5f6);
   color: #fff;
   padding: 0.75rem 1.5rem;
   border-radius: 25px;

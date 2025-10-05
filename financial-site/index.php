@@ -316,7 +316,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <li>Asset management support</li>
                             </ul>
                             <div class="service-card-more">
-                                <a href="contact.php">Learn More</a>
+                                <!-- <a href="contact.php">Learn More</a> -->
                             </div>
                         </div>
                     </div>
@@ -335,7 +335,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <li>Regular performance reports</li>
                             </ul>
                             <div class="service-card-more">
-                                <a href="contact.php">Learn More</a>
+                                <!-- <a href="contact.php">Learn More</a> -->
                             </div>
                         </div>
                     </div>
@@ -354,7 +354,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <li>Easy withdrawal options</li>
                             </ul>
                             <div class="service-card-more">
-                                <a href="contact.php">Learn More</a>
+                                <!-- <a href="contact.php">Learn More</a> -->
                             </div>
                         </div>
                     </div>
@@ -373,7 +373,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <li>24/7 customer support</li>
                             </ul>
                             <div class="service-card-more">
-                                <a href="contact.php">Learn More</a>
+                                <!-- <a href="contact.php">Learn More</a> -->
                             </div>
                         </div>
                     </div>
